@@ -13,11 +13,7 @@
 		],
 		"noUnusedLocals": true,
 		"esModuleInterop": true,
-		"strict": true,
-		"typeRoots": [
-			"./types",
-			"./node_modules/@types"
-		]
+		"strict": true
 	},
 	"include": [
 		"src/**/*"
