@@ -1,0 +1,17 @@
+$colors: (
+	"blue": $brand-blue,
+	"green": $brand-green,
+	"gray": $brand-grey,
+	"gray-dark": $layout-high-contrast-bg-light,
+	"red": $denotive-failure-light,
+);
+
+$danger: $denotive-failure-light;
+$success: $denotive-success-light;
+
+$body-color: $layout-high-contrast-bg-light;
+
+body {
+	background: url(../../images/textures/absurdity.png);
+}
+
