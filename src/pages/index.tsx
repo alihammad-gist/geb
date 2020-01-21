@@ -4,12 +4,19 @@ import { Link } from "gatsby"
 import Layout from '../components/layout'
 import Head from '../components/head';
 
+const bg = 
+	require('../components/banner/images/resized_chinars.jpg');
+
 export default () => {
 
 	const [isFocused, setFocus] = useState(false);
 
 	return (
-		<Layout>
+		<Layout
+			style={{
+				backgroundImage: `url("${bg}")` 
+			}}
+		>
 			<Head title="Home" />
 			<div
 				onMouseOver={_ => setFocus(true)}

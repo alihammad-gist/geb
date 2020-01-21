@@ -1,3 +1,4 @@
+/************ COLORS */
 $colors: (
 	"blue": $brand-blue,
 	"green": $brand-green,
@@ -11,7 +12,7 @@ $success: $denotive-success-light;
 
 $body-color: $layout-high-contrast-bg-light;
 
-body {
-	background: url(../../images/textures/absurdity.png);
-}
+$navbar-light-color:    rgba(#000, 0.6) !default;
 
+/************ FONT */
+$font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;

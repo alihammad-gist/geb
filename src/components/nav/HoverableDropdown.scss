@@ -1,0 +1,43 @@
+@import '../../../node_modules/animate.css/animate';
+
+.hoverable-menu {
+
+	.dropdown-menu {
+		top: 99%;
+		margin: 0;
+
+		&.closing {
+			animation-duration: 0.5s;
+			animation-name: dropdownInactive;
+		}
+
+		&.opened {
+			animation-duration: 0.3s;
+			animation-name: dropdownActive;
+		}
+	}
+}
+
+@keyframes dropdownInactive {
+	from {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+}
+
+@keyframes dropdownActive {
+	from {
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}

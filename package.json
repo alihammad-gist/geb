@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "gatsby": "^2.18.12",
     "gatsby-plugin-react-helmet": "^3.1.21",
