@@ -1,4 +1,4 @@
-import { NavigationItem } from '../nav-gen';
+import { NavigationItem } from '../nav';
 
 export const primary: NavigationItem[] = [
 	{
@@ -16,6 +16,7 @@ export const primary: NavigationItem[] = [
 				href: '/project-desc',
 				label: 'Project Description',
 			},
+			'separator',
 			{
 				name: 'msg-npd',
 				href: '/message-npd',
@@ -64,13 +65,14 @@ export const primary: NavigationItem[] = [
 			{
 				name: 'activities',
 				href: '/activities',
-				label: 'activities'
+				label: 'Activities'
 			},
 			{
 				name: 'press-coverage',
 				href: '/press-coverage',
 				label: 'GEB in Press',
 			},
+			'separator',
 			{
 				name: 'blog',
 				href: '/blog',
@@ -84,3 +86,38 @@ export const primary: NavigationItem[] = [
 		label: 'Contact Us',
 	},
 ];
+
+// General navigation contains only the top level nav items
+export const general: NavigationItem[] = primary.map( (item: NavigationItem) => {
+	if (item === 'separator') {
+		return item;
+	}
+
+	return { ...item, children: undefined };
+} );
+
+// Activities navigation to retrieve particular activity types
+export const activities: NavigationItem[] = [
+
+	{
+		name: 'activities-lectures',
+		href: '/activies#/lectures',
+		label: 'Lectures',
+	},
+	{
+		name: 'activities-events',
+		href: '/activies#/events',
+		label: 'Events',
+	},
+	{
+		name: 'activities-seminars',
+		href: '/activies#/seminars',
+		label: 'Seminars',
+	},
+	{
+		name: 'activities-conferences',
+		href: '/activies#/conferences',
+		label: 'Conferences',
+	},
+
+]

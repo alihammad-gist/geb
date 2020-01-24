@@ -1,0 +1,16 @@
+@import '../../styles/init.scss';
+
+.footer-nav {
+	.footer-nav-label {
+		font-weight: 600;
+		color: white;
+	}
+
+	.nav-link {
+		color: $layout-low-contrast-neutral-light;
+
+		@include hover-focus-active() {
+			color: $brand-blue;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+// This file mustn't produce CSS 
+// Include variables and mixins
+
+// Custom varaiables , bootstrap over-rides
+@import './vars/all.scss';
+
+
+// Overrides initialization ( with no css generation )
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Material shadows
+@import "../../node_modules/material-shadows/material-shadows";

@@ -1,22 +1,15 @@
 import * as React from "react"
 import { useState } from 'react';
 import { Link } from "gatsby"
-import Layout from '../components/layout'
+import { Layout } from '../components/layout';
 import Head from '../components/head';
-
-const bg = 
-	require('../components/banner/images/resized_chinars.jpg');
 
 export default () => {
 
 	const [isFocused, setFocus] = useState(false);
 
 	return (
-		<Layout
-			style={{
-				backgroundImage: `url("${bg}")` 
-			}}
-		>
+		<Layout>
 			<Head title="Home" />
 			<div
 				onMouseOver={_ => setFocus(true)}

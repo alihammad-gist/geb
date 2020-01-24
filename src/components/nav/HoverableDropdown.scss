@@ -1,21 +1,49 @@
-@import '../../../node_modules/animate.css/animate';
+@import '../../styles/init';
 
 .hoverable-menu {
 
-	.dropdown-menu {
-		top: 99%;
-		margin: 0;
+	@include media-breakpoint-up(md) {
 
-		&.closing {
-			animation-duration: 0.5s;
-			animation-name: dropdownInactive;
+		.dropdown-menu {
+			top: 99%;
+			margin: 0;
+
+			&.closing {
+				animation-duration: 0.5s;
+				animation-name: dropdownInactive;
+			}
+
+			&.opened {
+				animation-duration: 0.3s;
+				animation-name: dropdownActive;
+			}
 		}
 
-		&.opened {
-			animation-duration: 0.3s;
-			animation-name: dropdownActive;
-		}
 	}
+
+	.dropdown-item {
+
+		position: relative;
+
+		&:before{
+			@include caret-right();
+			border-color: transparent;
+			display: inline-block;
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+		}
+
+		&:hover {
+			&:before {
+				border-left-color: $brand-blue;
+			}
+		}
+
+	}
+
 }
 
 @keyframes dropdownInactive {

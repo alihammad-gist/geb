@@ -12,7 +12,9 @@ $success: $denotive-success-light;
 
 $body-color: $layout-high-contrast-bg-light;
 
-$navbar-light-color:    rgba(#000, 0.6) !default;
+$navbar-light-color:												rgba(#000, 0.6) !default;
+$navbar-light-hover-color:						$brand-blue; 
+$navbar-light-active-color:						$brand-blue;
 
 /************ FONT */
 $font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;

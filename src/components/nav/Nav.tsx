@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import {
 	// Nav components
 	NavProps,
@@ -15,9 +15,9 @@ export type NavigationItem = {
 	href: string,
 	label: string,
 	children?:NavigationItem[],
-}
+} | 'separator';
 
-type Props = {
+export type Props = {
 	navigation: NavigationItem[],
 	activePath?: string[],
 	navProps?: NavProps
@@ -31,10 +31,12 @@ export default function ({ navigation, activePath=[], navProps}: Props)  {
 
 	return (
 		React.createElement(Nav, navProps, navigation.map(item => {
+			if (item === 'separator')
+				return null;
 
 			if(typeof item.children === 'undefined') {
 				return (
-					<NavItem active={activeItem === item.name}>
+					<NavItem key={item.name} active={activeItem === item.name}>
 						<NavLink href={item.href}>
 							{item.label}
 						</NavLink>

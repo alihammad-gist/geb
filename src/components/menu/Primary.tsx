@@ -8,8 +8,8 @@ import {
 } from 'reactstrap';
 
 import Logo from '../logo';
-import NavGen from '../nav';
-import './primary.scss';
+import { Nav as NavGen }from '../nav';
+import './Primary.scss';
 import { primary as data } from './navs-data';
 
 

@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { NavigationItem, ActivePath } from '.';
+import { useMedia } from 'react-media-match';
+
+import { NavigationItem, ActivePath } from './index';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownProps, DropdownToggleProps, DropdownMenuProps, DropdownItem } from 'reactstrap';
 
 import './HoverableDropdown.scss';
@@ -14,8 +16,8 @@ type Props = {
 
 enum DropdownState {
 	Opened,
-	Closing,
-	Closed,
+		Closing,
+		Closed,
 }
 
 export default ({
@@ -28,10 +30,11 @@ export default ({
 
 	const activeLink = activePath[0] || null;	
 	const activeSublink = activePath[1] || null;
-	const children = item.children || [];
+	const children: NavigationItem[] = item === 'separator' ? [] : item.children || [];
 
 	const [state, setState] = useState(DropdownState.Closed);
 	const timeoutID = useRef<number>(-1); // setTimeout returns only positive ID
+
 
 	const open = () => {
 		clearTimeout(timeoutID.current);
@@ -45,6 +48,38 @@ export default ({
 		}, 500) as unknown as number;	
 	}
 
+	const toggle = () => {
+		console.log('toggle called');
+		if(state === DropdownState.Opened) { 
+			setState(DropdownState.Closed);
+		} else {
+			setState(DropdownState.Opened);
+		}
+	}
+
+	const interaction = useMedia<DropdownProps>({
+		tablet: {
+			toggle: toggle,
+			onMouseOver: () => {},
+			onMouseOut: () => {},
+		}, 
+		mobile: {
+			toggle: toggle,
+			onMouseOver: () => {},
+			onMouseOut: () => {},
+		}, 
+		desktop: {
+			toggle: () => false,
+			onMouseOver: open,
+			onMouseOut: close,
+			onBlur: close,
+			onFocus: open,
+		},
+	});
+
+	if (item == 'separator') 
+		return null;
+
 	return (
 		<Dropdown 
 			{...dropdownProps} 
@@ -52,16 +87,12 @@ export default ({
 			isOpen={state !== DropdownState.Closed}
 
 
-			// Keyboard control pairs
-			onFocus={open}
-			onBlur={close}
+			// Mouse and keyboard interactions
+			{...interaction}
 
-			// Mouse over
-			onMouseOver={open}
-			onMouseOut={close}
 			className={
 				dropdownProps.className ? 
-					`${dropdownProps.className} hoverable-menu` : 'hoverable-menu'
+				`${dropdownProps.className} hoverable-menu` : 'hoverable-menu'
 			}
 		>
 			<DropdownToggle 
@@ -72,16 +103,20 @@ export default ({
 			</DropdownToggle>
 			<DropdownMenu 
 				{...dropdownMenuProps}
-				className={
+				className={ 
+					(
 					state === DropdownState.Closing ? 
-						'closing' :
-						state === DropdownState.Opened ?
-							'opened' : ''
+					'shadow closing' :
+					state === DropdownState.Opened ?
+					'shadow opened' : ''
+					)
 				}
 			>
 				{ children.map(
 					i => 
-					<DropdownItem href={i.href} active={activeSublink === i.name}>
+					i === 'separator' ? 
+					<DropdownItem divider />:
+					<DropdownItem href={i.href} active={activeSublink === i.name} key={i.name}>
 						{i.label}	
 					</DropdownItem>
 				) }
