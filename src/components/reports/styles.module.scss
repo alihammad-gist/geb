@@ -1,0 +1,31 @@
+@import "../../styles/init.scss";
+
+.reportGridItem {
+  @include z-depth-transition();
+  @include z-depth(2);
+
+  display: block;
+  position: relative;
+  transition-property: box-shadow, transform, z-index;
+  transform: scale(1);
+  z-index: 1;
+
+  @include hover-focus-active {
+    @include z-depth(16);
+    @include z-depth-transition();
+
+    z-index: 100;
+    transition-property: box-shadow, transform, z-index;
+    transform: scale(1.2);
+  }
+}
+
+.reportGridSection {
+  background: url(./assets/background.png) no-repeat;
+  background-position: right center;
+  background-size: 100% 100%;
+}
+
+.itemContainer:hover {
+  cursor: pointer;
+}

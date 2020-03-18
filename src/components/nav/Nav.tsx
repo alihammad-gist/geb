@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import {
 	// Nav components
 	NavProps,
@@ -14,27 +14,34 @@ export type NavigationItem = {
 	name: string
 	href: string,
 	label: string,
-	children?:NavigationItem[],
+	children?: NavigationItem[],
 } | 'separator';
 
 export type Props = {
 	navigation: NavigationItem[],
 	activePath?: string[],
 	navProps?: NavProps
-};
+} & HTMLAttributes<any>;
 
-export default function ({ navigation, activePath=[], navProps}: Props)  {	
+export default function (props: Props) {
+	const {
+		navigation,
+		activePath = [],
+		navProps,
+		...htmlAttribs
+	} = props;
+
 	let activeItem: string = '';
 	if (activePath.length) {
 		activeItem = activePath[0];
 	}
 
 	return (
-		React.createElement(Nav, navProps, navigation.map(item => {
+		React.createElement(Nav, { ...navProps, ...htmlAttribs }, navigation.map(item => {
 			if (item === 'separator')
 				return null;
 
-			if(typeof item.children === 'undefined') {
+			if (typeof item.children === 'undefined') {
 				return (
 					<NavItem key={item.name} active={activeItem === item.name}>
 						<NavLink href={item.href}>
@@ -45,11 +52,12 @@ export default function ({ navigation, activePath=[], navProps}: Props)  {
 			}
 
 			return (
-				<Dropdown 
-					item={item} 
-					activePath={activePath} 
-					dropdownProps={{nav: true, inNavbar: true}}
-					dropdownToggleProps={{nav: true, caret: true}}
+				<Dropdown
+					item={item}
+					activePath={activePath}
+					dropdownProps={{ nav: true, inNavbar: true }}
+					dropdownToggleProps={{ nav: true, caret: true }}
+					key={item.name}
 				/>
 			);
 

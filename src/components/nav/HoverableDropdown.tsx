@@ -16,19 +16,19 @@ type Props = {
 
 enum DropdownState {
 	Opened,
-		Closing,
-		Closed,
+	Closing,
+	Closed,
 }
 
 export default ({
-	item, 
-	activePath=[], 
-	dropdownProps={},
-	dropdownToggleProps={ caret: true },
-	dropdownMenuProps={}
+	item,
+	activePath = [],
+	dropdownProps = {},
+	dropdownToggleProps = { caret: true },
+	dropdownMenuProps = {}
 }: Props) => {
 
-	const activeLink = activePath[0] || null;	
+	const activeLink = activePath[0] || null;
 	const activeSublink = activePath[1] || null;
 	const children: NavigationItem[] = item === 'separator' ? [] : item.children || [];
 
@@ -44,13 +44,13 @@ export default ({
 	const close = () => {
 		setState(DropdownState.Closing);
 		timeoutID.current = setTimeout(() => {
-			setState(DropdownState.Closed);	
-		}, 500) as unknown as number;	
+			setState(DropdownState.Closed);
+		}, 500) as unknown as number;
 	}
 
 	const toggle = () => {
 		console.log('toggle called');
-		if(state === DropdownState.Opened) { 
+		if (state === DropdownState.Opened) {
 			setState(DropdownState.Closed);
 		} else {
 			setState(DropdownState.Opened);
@@ -60,14 +60,14 @@ export default ({
 	const interaction = useMedia<DropdownProps>({
 		tablet: {
 			toggle: toggle,
-			onMouseOver: () => {},
-			onMouseOut: () => {},
-		}, 
+			onMouseOver: () => { },
+			onMouseOut: () => { },
+		},
 		mobile: {
 			toggle: toggle,
-			onMouseOver: () => {},
-			onMouseOut: () => {},
-		}, 
+			onMouseOver: () => { },
+			onMouseOut: () => { },
+		},
 		desktop: {
 			toggle: () => false,
 			onMouseOver: open,
@@ -77,13 +77,13 @@ export default ({
 		},
 	});
 
-	if (item == 'separator') 
+	if (item == 'separator')
 		return null;
 
 	return (
-		<Dropdown 
-			{...dropdownProps} 
-			active={activeLink === item.name} 
+		<Dropdown
+			{...dropdownProps}
+			active={activeLink === item.name}
 			isOpen={state !== DropdownState.Closed}
 
 
@@ -91,37 +91,36 @@ export default ({
 			{...interaction}
 
 			className={
-				dropdownProps.className ? 
-				`${dropdownProps.className} hoverable-menu` : 'hoverable-menu'
+				dropdownProps.className ?
+					`${dropdownProps.className} hoverable-menu` : 'hoverable-menu'
 			}
 		>
-			<DropdownToggle 
+			<DropdownToggle
 				// Mouse click state cycle
 				{...dropdownToggleProps}
 			>
 				{item.label}
 			</DropdownToggle>
-			<DropdownMenu 
+			<DropdownMenu
 				{...dropdownMenuProps}
-				className={ 
+				className={
 					(
-					state === DropdownState.Closing ? 
-					'shadow closing' :
-					state === DropdownState.Opened ?
-					'shadow opened' : ''
+						state === DropdownState.Closing ?
+							'shadow closing' :
+							state === DropdownState.Opened ?
+								'shadow opened' : ''
 					)
 				}
 			>
-				{ children.map(
-					i => 
-					i === 'separator' ? 
-					<DropdownItem divider />:
-					<DropdownItem href={i.href} active={activeSublink === i.name} key={i.name}>
-						{i.label}	
-					</DropdownItem>
-				) }
+				{children.map((i, idx) =>
+					i === 'separator' ?
+						<DropdownItem divider key={idx} /> :
+						<DropdownItem href={i.href} active={activeSublink === i.name} key={i.name}>
+							{i.label}
+						</DropdownItem>
+				)}
 			</DropdownMenu>
 		</Dropdown>
-	);	
+	);
 
 }

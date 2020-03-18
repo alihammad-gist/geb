@@ -16,7 +16,6 @@ export const primary: NavigationItem[] = [
 				href: '/project-desc',
 				label: 'Project Description',
 			},
-			'separator',
 			{
 				name: 'msg-npd',
 				href: '/message-npd',
@@ -46,14 +45,15 @@ export const primary: NavigationItem[] = [
 				label: 'Reports',
 			},
 			{
-				name: 'publications',
-				href: '/publications',
-				label: 'Important Publications',
-			},
-			{
 				name: 'stories',
 				href: '/stories',
 				label: 'Success Stories',
+			},
+			'separator',
+			{
+				name: 'publications',
+				href: '/publications',
+				label: 'Important Publications',
 			},
 		],
 	},
@@ -68,15 +68,15 @@ export const primary: NavigationItem[] = [
 				label: 'Activities'
 			},
 			{
-				name: 'press-coverage',
-				href: '/press-coverage',
-				label: 'GEB in Press',
-			},
-			'separator',
-			{
 				name: 'blog',
 				href: '/blog',
 				label: 'Blog',
+			},
+			'separator',
+			{
+				name: 'press-coverage',
+				href: '/press-coverage',
+				label: 'GEB in Press',
 			},
 		],
 	},
@@ -85,16 +85,21 @@ export const primary: NavigationItem[] = [
 		href: '/contact-us',
 		label: 'Contact Us',
 	},
+	{
+		name: 'search',
+		href: "#",
+		label: "Search"
+	}
 ];
 
 // General navigation contains only the top level nav items
-export const general: NavigationItem[] = primary.map( (item: NavigationItem) => {
+export const general: NavigationItem[] = primary.map((item: NavigationItem) => {
 	if (item === 'separator') {
 		return item;
 	}
 
 	return { ...item, children: undefined };
-} );
+});
 
 // Activities navigation to retrieve particular activity types
 export const activities: NavigationItem[] = [

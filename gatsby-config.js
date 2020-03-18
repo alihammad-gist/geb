@@ -5,6 +5,8 @@
  */
 
 module.exports = {
+	pathPrefix: "/geb",
+
 	/* Your site config here */
 	siteMetadata: {
 		title: "Generating Global Environmental Benefits",
@@ -20,13 +22,13 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-react-helmet',
-		{
-			resolve: 'gatsby-source-contentful',
-			options: {
-				spaceId: '58ccq9793tyq',
-				accessToken: '3qflefNFapdprdmpIgBXzBVKnqEvXPd8Gh0n4NCU8Ak',
-			}
-		},
+		// {
+		// 	resolve: 'gatsby-source-contentful',
+		// 	options: {
+		// 		spaceId: '58ccq9793tyq',
+		// 		accessToken: '3qflefNFapdprdmpIgBXzBVKnqEvXPd8Gh0n4NCU8Ak',
+		// 	}
+		// },
 
 		{
 			resolve: 'gatsby-plugin-sass',
@@ -42,31 +44,47 @@ module.exports = {
 			}
 		},
 
-		'gatsby-plugin-sharp',
-		{
-			resolve: 'gatsby-transformer-remark', 
-			options: {
-				plugins: [
-					'gatsby-remark-relative-images',
-					{
-						resolve: 'gatsby-remark-images',
-						options: {
-							maxWidth: 750,
-							linkImagesToOriginal: false
-						}
-					}
-				]
-			}
-		},
+		// 'gatsby-plugin-sharp',
+		// {
+		// 	resolve: 'gatsby-transformer-remark',
+		// 	options: {
+		// 		plugins: [
+		// 			'gatsby-remark-relative-images',
+		// 			{
+		// 				resolve: 'gatsby-remark-images',
+		// 				options: {
+		// 					maxWidth: 750,
+		// 					linkImagesToOriginal: false
+		// 				}
+		// 			}
+		// 		]
+		// 	}
+		// },
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {
 				fonts: [
-					`Montserrat\:400,400i,600,700,900`,
+					`Roboto`,
+					`Zilla+Slab\:400,600,700`,
+					// `Material+Icons`,
 				],
 				display: 'swap'
 			}
 		},
-
+		{
+			resolve: `gatsby-source-strapi`,
+			options: {
+				apiURL: `http://localhost:1337`,
+				queryLimit: 1000, // Default to 100
+				contentTypes: [
+					`user`,
+					`team-member`,
+					`project-description`,
+					`activity`,
+					`report`,
+					// `member`
+				]
+			},
+		}
 	]
 };

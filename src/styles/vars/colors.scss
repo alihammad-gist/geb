@@ -1,3 +1,5 @@
+@import "sass-material-colors";
+
 /**
  *
  * "-light" and "-dark" suffixes denote the expected background (light or dark)
@@ -5,14 +7,11 @@
  *
  */
 
-
 /* brand colors */
-$brand-blue: darken(#5b97b3, 10%);
-$brand-green: darken(#68aa6d, 14%);
-$brand-grey: #e9e5e4;
-
-
-
+$brand-blue: material-color("blue", "500");
+$brand-green: material-color("teal", "500");
+$brand-grey: material-color("grey", "50");
+$accent: material-color("teal", "a700");
 
 /* layout */
 
@@ -31,14 +30,11 @@ $layout-high-contrast-bg-dark: #ffffff;
 $layout-reduced-contrast-light: $layout-low-contrast-neutral-dark;
 $layout-reduced-contrast-dark: $layout-low-contrast-neutral-light;
 
-
-
-
 /* denotive */
 
 // representing success
 $denotive-success-light: #2c7d32; // has contrast ratio of 5+ with bg light
-$denotive-success-dark: #68aa6d;  // has contrast ratio of 5+ with bg dark
+$denotive-success-dark: #68aa6d; // has contrast ratio of 5+ with bg dark
 
 // representing failure
 $denotive-failure-light: #bc3e21;
@@ -47,9 +43,6 @@ $denotive-failure-dark: #da9585;
 // disabled state
 $denotive-disabled-light: #767474;
 $denotive-disabled-dark: #929090;
-
-
-
 
 /* interactive */
 

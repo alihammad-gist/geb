@@ -19,7 +19,7 @@ export default () => {
 	return (
 		<footer className="footer">
 			<FooterAffiliates />
-			<Container className="pt-4">
+			<Container className="mt-3">
 				<Row>
 					<Col md="3"><GeneralNav /></Col>
 					<Col md="3"><ActivitiesNav /></Col>

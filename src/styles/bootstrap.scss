@@ -1,6 +1,10 @@
 // Bootstrap / custom variables and mixins
 @import "./init";
 
+// animate.css animations, the animation names can be
+// used any where in the app.
+@import "../../node_modules/animate.css/animate.css";
+
 // Bootstrap browser resets and components
 @import "../../node_modules/bootstrap/scss/root";
 @import "../../node_modules/bootstrap/scss/reboot";
@@ -9,6 +13,10 @@
 @import "../../node_modules/bootstrap/scss/code";
 @import "../../node_modules/bootstrap/scss/grid";
 @import "../../node_modules/bootstrap/scss/tables";
+th {
+  font-family: $font-family-serif;
+}
+
 @import "../../node_modules/bootstrap/scss/forms";
 @import "../../node_modules/bootstrap/scss/buttons";
 @import "../../node_modules/bootstrap/scss/transitions";
@@ -30,9 +38,16 @@
 @import "../../node_modules/bootstrap/scss/close";
 @import "../../node_modules/bootstrap/scss/toasts";
 @import "../../node_modules/bootstrap/scss/modal";
+.modal-header,
+.modal-footer {
+  background-color: $brand-grey;
+}
 @import "../../node_modules/bootstrap/scss/tooltip";
 @import "../../node_modules/bootstrap/scss/popover";
 @import "../../node_modules/bootstrap/scss/carousel";
 @import "../../node_modules/bootstrap/scss/spinners";
 @import "../../node_modules/bootstrap/scss/utilities";
 @import "../../node_modules/bootstrap/scss/print";
+
+// GEB styles
+@import "./icons";
