@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{dIdl:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),l=t.n(a),c=t("Ac47"),o=t("RnvD");n.default=function(){return l.a.createElement(c.a,null,l.a.createElement(o.a,{title:"Home"}),l.a.createElement("h1",null,"Hello"))}}}]);
+//# sourceMappingURL=component---src-pages-about-team-tsx-6b341029347691d4a833.js.map
