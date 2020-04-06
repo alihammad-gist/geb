@@ -12,6 +12,7 @@ export type Member = {
     about: string
     remarks: string
     job_title: string
+    job_desc: string
 }
 
 export type QueryResult = {

@@ -8,7 +8,8 @@ $colors: (
 );
 
 $theme-colors: (
-  "accent": $accent
+  "accent": $accent,
+  "grey": $brand-grey
 );
 
 $primary: $brand-blue;
@@ -32,6 +33,7 @@ $font-family-sans-serif: "Robot", -apple-system, BlinkMacSystemFont, "Segoe UI",
   "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-serif: "Zilla Slab", Garamond, Gerogie, Times;
 $headings-font-family: $font-family-serif;
+$font-weight-bold: 700;
 
 /************ Dropdown */
 $dropdown-link-hover-color: white;
@@ -39,12 +41,19 @@ $dropdown-link-hover-bg: $brand-blue;
 $dropdown-border-radius: none;
 $dropdown-border-width: 0;
 
-/************ Button   */
+// Buttons
 
 $btn-border-radius: none;
 $btn-border-radius-lg: none;
 $btn-border-radius-sm: none;
 
-/************ Modal   */
+// Modals
+
 $modal-content-inner-border-radius: none;
 $modal-content-border-radius: none;
+
+// Badges
+
+$badge-font-size: 75% !default;
+$badge-font-weight: 400;
+$badge-border-radius: 0;

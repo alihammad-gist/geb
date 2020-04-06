@@ -38,11 +38,11 @@
     //                 | initial | inherit
 
     .outcome-slide-cover {
-      animation: bounceInRight 0.9s, bounceOutUp 1.3s ease 5.2s;
+      animation: bounceInRight 0.9s, bounceOutUp 1.3s ease 8.2s;
       animation-fill-mode: forwards;
     }
     .outcome-slide-text {
-      animation: bounceInLeft 0.7s, bounceOutDown 1.3s ease 5s;
+      animation: bounceInLeft 0.7s, bounceOutDown 1.3s ease 8s;
       animation-fill-mode: forwards;
     }
 
@@ -54,15 +54,15 @@
       visibility: visible;
     }
   }
-
   &:nth-child(2n + 1).active {
+    // default animation set
     .outcome-slide-cover {
-      animation: bounceInDown 0.9s, bounceOutRight 1.3s ease 5.2s;
+      animation: bounceInDown 0.9s, bounceOutRight 1.3s ease 8.2s;
       animation-fill-mode: none, forwards;
     }
 
     .outcome-slide-text {
-      animation: bounceInUp 0.7s, bounceOutLeft 1.3s ease 5s;
+      animation: bounceInUp 0.7s, bounceOutLeft 1.3s ease 8s;
       animation-fill-mode: none, forwards;
     }
   }
@@ -99,4 +99,12 @@
   .carousel-inner .active {
     opacity: 1;
   }
+}
+
+.banner-cto {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
 }

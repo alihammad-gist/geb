@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-import { CarouselItem, Carousel, CarouselControl } from 'reactstrap';
+import { CarouselItem, Carousel, CarouselControl, Button } from 'reactstrap';
 import { OutcomeSlide } from '../project-description';
 import { useStaticQuery, graphql } from 'gatsby';
 import { QueryResult } from 'ProjectDescriptionExcerpt';
 
 import './styles.scss';
+import { MdDescription, MdSubject, MdArrowForward } from 'react-icons/md';
 
 
 
@@ -74,33 +75,48 @@ export default () => {
 	});
 
 	return (
-		<Carousel
-			activeIndex={activeIdx}
-			next={next}
-			previous={prev}
-			pause={false}
-			interval={7000}
-			className="carousel-fade outcomes-slider"
-		>
+		<div className="clearfix position-relative">
+			<Carousel
+				activeIndex={activeIdx}
+				next={next}
+				previous={prev}
+				className="carousel-fade outcomes-slider"
+				ride="carousel"
+				interval={8900}
+				pause={false}
+			>
 
-			{/* slides */}
-			{slides}
+				{/* slides */}
+				{slides}
 
-			{/* left control (previous) */}
-			<CarouselControl
-				direction="prev"
-				directionText="Previous"
-				onClickHandler={prev}
-			/>
+				{/* left control (previous) */}
+				<CarouselControl
+					direction="prev"
+					directionText="Previous"
+					onClickHandler={prev}
+				/>
 
-			{/* Right control (next)  */}
-			<CarouselControl
-				direction="next"
-				directionText="Next"
-				onClickHandler={next}
-			/>
+				{/* Right control (next)  */}
+				<CarouselControl
+					direction="next"
+					directionText="Next"
+					onClickHandler={next}
+				/>
 
-		</Carousel>
+			</Carousel>
+			<div className='banner-cto'>
+				<Button
+					size="lg"
+					color="primary"
+					className="shadow"
+				>
+					Read Project Details
+					<span className="svg-icon svg-baseline ml-2 arrow-forward-animate">
+						<MdArrowForward />
+					</span>
+				</Button>
+			</div>
+		</div>
 	);
 }
 

@@ -4,18 +4,20 @@ type Props = {
     max: number
     text: string
     expandable: boolean
+    tag?: string
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default (props: Props) => {
-    const { max, text, expandable, ...rest } = props;
+    const { max, text, expandable, tag = 'p', ...rest } = props;
     const [isExpanded, expand] = useState(false);
 
     const exceeds = lengthChecker(max);
 
     return (
-
-        <p {...rest}>
-            {exceeds(text) ?
+        React.createElement(
+            tag,
+            rest,
+            exceeds(text) ?
                 <>
                     <span>{
                         isExpanded ?
@@ -32,8 +34,8 @@ export default (props: Props) => {
                         </a>
                         : null}
                 </>
-                : text}
-        </p>
+                : text
+        )
     );
 }
 

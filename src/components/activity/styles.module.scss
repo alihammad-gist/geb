@@ -1,7 +1,7 @@
 @import "../../styles/init.scss";
 
 .slideContainer {
-  &:hover {
+  @include hover-focus {
     .slideMeta {
       visibility: visible;
       animation: sliderIn 0.3s ease-in;
@@ -13,6 +13,17 @@
         animation-fill-mode: forwards;
       }
     }
+
+    .slideTag {
+      background-color: $primary;
+      transition: background-color 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    .slideCover {
+      transform: scale(1.15) translateX(-50%);
+      transition: transform 0.5s;
+    }
   }
 
   &:nth-child(2n) {
@@ -22,6 +33,12 @@
 
     .slideMeta {
       background-color: rgba($color: $brand-green, $alpha: 1);
+    }
+
+    @include hover-focus() {
+      .slideTag {
+        background-color: $brand-green;
+      }
     }
   }
 }
@@ -49,7 +66,7 @@
 
 .slide {
   overflow: hidden;
-  height: 320px;
+  height: 360px;
   position: relative;
   display: flex;
   flex-direction: column-reverse;
@@ -63,8 +80,9 @@
   min-width: 100%;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: scale(1) translateX(-50%);
   z-index: -1;
+  transition: all 0.8s;
 }
 
 .slideTitle {
@@ -72,7 +90,7 @@
   background-color: rgba($color: $brand-blue, $alpha: 0.9);
   color: white;
   margin: 0;
-  height: 150px;
+  height: 120px;
 }
 
 .slideMeta {
@@ -90,6 +108,17 @@
   transform: translateX(110%);
   display: block;
   float: right;
+}
+
+.slideTag {
+  transition: background-color 0.8s;
+}
+
+.slideTagContainer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.1rem;
 }
 
 .slideIndicators {

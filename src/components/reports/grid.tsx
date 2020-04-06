@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Section, SectionType } from '../layout';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { useStaticQuery, graphql } from 'gatsby';
 import { QueryResult } from './query';
 import * as styles from './styles.module.scss';
 import { GridItem } from '.';
-import { MdClose } from 'react-icons/md';
+import { Truncate } from '../text';
+import { dummyText } from '../../lib/text';
+import ScrollAnimation from 'react-animate-on-scroll';
+import { MdArrowForward } from 'react-icons/md';
 
 export default () => {
+
     const data = useStaticQuery(graphql`
         query reportGrid {
             allStrapiReport(
                 limit: 10, 
                 filter: {id: {in: [
                         "Report_4",
-                        "Report_7",
+                        "Report_3",
                         "Report_6",
-                        "Report_10"
+                        "Report_1"
                     ]}}
                 ) {
             edges {
@@ -42,6 +46,7 @@ export default () => {
     return (
         <Section type={SectionType.darkOverGray} className={styles.reportGridSection}>
             <Container>
+
                 <h2 className="text-center mb-5"> Reports</h2>
                 <Row>
                     {data.allStrapiReport.edges.map(({ node }, idx) => (
@@ -49,10 +54,15 @@ export default () => {
                             key={idx}
                             md={3}
                             href='#'
-                            className={`${styles.itemContainer}`}
+                            className={`mb-4 ${styles.itemContainer}`}
                             onClick={() => console.log(node.id)}
                         >
-                            <GridItem report={node} key={idx} />
+                            <ScrollAnimation
+                                animateIn="fadeInUp"
+                                delay={idx * 120}
+                            >
+                                <GridItem report={node} key={idx} />
+                            </ScrollAnimation>
                         </Col>
                     ))}
                 </Row>
@@ -60,9 +70,12 @@ export default () => {
                     <Col>
                         <Button
                             className="float-right"
-                            color="accent"
+                            color="primary"
                         >
                             More Reports and Studies
+                           <span className="svg-icon svg-baseline ml-2 arrow-forward-animate">
+                                <MdArrowForward />
+                            </span>
                         </Button>
                     </Col>
                 </Row>

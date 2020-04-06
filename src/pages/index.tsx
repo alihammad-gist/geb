@@ -4,9 +4,10 @@ import Head from '../components/head';
 import { HomepageBanner } from '../components/banner';
 import { Slides } from "../components/activity";
 import { Grid } from "../components/reports";
-import { Heads } from "../components/team";
+import { Heads, MemberMediaType } from "../components/team";
 
 export default () => {
+
 
 	return (
 		<Layout>
@@ -14,7 +15,7 @@ export default () => {
 			<HomepageBanner />
 			<Slides />
 			<Grid />
-			<Heads />
+			<Heads typ={MemberMediaType.Vertical} centered />
 		</Layout>
 	);
 }

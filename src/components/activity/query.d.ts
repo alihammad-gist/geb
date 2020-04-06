@@ -5,6 +5,10 @@ export type Cover = {
     }
 }
 
+type ActivityType = {
+    name: string
+}
+
 export type Activity = {
     id: string
     title: string
@@ -12,6 +16,7 @@ export type Activity = {
     venue: string
     description: string
     Cover: Cover
+    activity_types: [ActivityType, ...ActivityType[]] // at least one activity type exists
 }
 
 export type QueryResult = {

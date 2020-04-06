@@ -8,7 +8,7 @@ export const primary: NavigationItem[] = [
 	},
 	{
 		name: 'about-us',
-		href: '/about-us',
+		href: '/about',
 		label: 'About Us',
 		children: [
 			{
@@ -27,8 +27,8 @@ export const primary: NavigationItem[] = [
 				label: 'Message from NPC',
 			},
 			{
-				name: 'our-team',
-				href: '/our-team',
+				name: 'team',
+				href: '/about/team',
 				label: 'Our Team',
 			},
 		]

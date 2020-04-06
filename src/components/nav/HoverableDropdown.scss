@@ -1,72 +1,71 @@
-@import '../../styles/init';
-
+@import "../../styles/init";
 
 .hoverable-menu {
+  @include media-breakpoint-up(md) {
+    .dropdown-menu {
+      top: 99%;
+      margin: 0;
 
-	@include media-breakpoint-up(md) {
+      &.closing {
+        animation-duration: 0.5s;
+        animation-name: dropdownInactive;
+        animation-fill-mode: forwards;
+      }
 
-		.dropdown-menu {
-			top: 99%;
-			margin: 0;
+      &.opened {
+        animation-duration: 0.3s;
+        animation-name: dropdownActive;
+      }
+    }
+  }
 
-			&.closing {
-				animation-duration: 0.5s;
-				animation-name: dropdownInactive;
-			}
+  .dropdown-item {
+    position: relative;
+    background-color: white;
+    transition-property: background-color 0.5s ease;
 
-			&.opened {
-				animation-duration: 0.3s;
-				animation-name: dropdownActive;
-			}
-		}
+    &:before {
+      @include caret-right();
+      border-color: transparent;
+      display: inline-block;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
 
-	}
+    @include hover-focus() {
+      transition: background-color 0.5s ease;
+      background-color: $brand-blue;
 
-	.dropdown-item {
-
-		position: relative;
-
-		&:before{
-			@include caret-right();
-			border-color: transparent;
-			display: inline-block;
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: 0;
-			transform: translateY(-50%);
-		}
-
-		&:hover {
-			&:before {
-				border-left-color: $brand-blue;
-			}
-		}
-
-	}
-
+      &:before {
+        border-left-color: white;
+      }
+    }
+  }
 }
 
 @keyframes dropdownInactive {
-	from {
-		transform: translateY(0);
-		opacity: 1;
-	}
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-	to {
-		transform: translateY(1rem);
-		opacity: 0;
-	}
+  to {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
 }
 
 @keyframes dropdownActive {
-	from {
-		transform: translateY(1rem);
-		opacity: 0;
-	}
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
 
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

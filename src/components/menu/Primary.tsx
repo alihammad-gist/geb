@@ -20,9 +20,9 @@ export default () => {
 
 
 	return (
-		<Navbar light expand="md" className={styles.primary}>
-			<Container>
-				<NavbarBrand href='/' className="d-md-none">
+		<Navbar light expand="md" className={`${styles.primary} shadow`}>
+			<Container className={styles.topBar}>
+				<NavbarBrand href='/' >
 					<Logo />
 				</NavbarBrand>
 
@@ -30,18 +30,8 @@ export default () => {
 				<Collapse isOpen={isOpen} navbar className={styles.menuContainer}>
 					<NavGen
 						activePath={["home"]}
-						navigation={data.slice(0, 3)}
+						navigation={data}
 						navProps={{ navbar: true }}
-						className={`${styles.menus} ${styles.menuLeft}`}
-					/>
-					<div className={`d-none d-md-block d-lg-block ${styles.logo}`}>
-						<Logo />
-					</div>
-					<NavGen
-						activePath={["home"]}
-						navigation={data.slice(3, 6)}
-						navProps={{ navbar: true }}
-						className={`${styles.menus} ${styles.menuRight}`}
 					/>
 				</Collapse>
 			</Container>

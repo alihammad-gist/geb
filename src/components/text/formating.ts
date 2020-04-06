@@ -6,6 +6,5 @@ dayjs.extend(AdvancedFormat) // use plugin
 
 export function formateDate(graphqlDate: string): string {
     const d = dayjs(graphqlDate);
-
-    return d.format("MMM Do, YYYY")
+    return d.format("MMMM Do, YYYY")
 }

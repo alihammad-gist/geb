@@ -5,6 +5,7 @@ import { NavigationItem, ActivePath } from './index';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownProps, DropdownToggleProps, DropdownMenuProps, DropdownItem } from 'reactstrap';
 
 import './HoverableDropdown.scss';
+import { Link } from 'gatsby';
 
 type Props = {
 	item: NavigationItem
@@ -83,7 +84,7 @@ export default ({
 	return (
 		<Dropdown
 			{...dropdownProps}
-			active={activeLink === item.name}
+			// active={activeLink === item.name}
 			isOpen={state !== DropdownState.Closed}
 
 
@@ -115,7 +116,12 @@ export default ({
 				{children.map((i, idx) =>
 					i === 'separator' ?
 						<DropdownItem divider key={idx} /> :
-						<DropdownItem href={i.href} active={activeSublink === i.name} key={i.name}>
+						<DropdownItem
+							// active={activeSublink === i.name}
+							tag={Link}
+							to={i.href}
+							key={idx}
+						>
 							{i.label}
 						</DropdownItem>
 				)}

@@ -5,4 +5,6 @@ export const slideCover: string;
 export const slideTitle: string;
 export const slideMeta: string;
 export const slideVenue: string;
+export const slideTag: string;
+export const slideTagContainer: string;
 export const slideIndicators: string;

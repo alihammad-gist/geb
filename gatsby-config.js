@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-	pathPrefix: "/geb",
+	pathPrefix: process.env.PATH_PREFIX || "/",
 
 	/* Your site config here */
 	siteMetadata: {
@@ -85,6 +85,17 @@ module.exports = {
 					// `member`
 				]
 			},
-		}
+		},
+		// {
+		// 	resolve: `gatsby-plugin-purgecss`,
+		// 	options: {
+		// 		printRejected: true, // Print removed selectors and processed file names
+		// 		develop: true, // Enable while using `gatsby develop`
+		// 		// tailwind: true, // Enable tailwindcss support
+		// 		// whitelist: ['whitelist'], // Don't remove this selector
+		// 		// ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+		// 		purgeOnly: ['node_modules/'], // Purge only these files/folders
+		// 	}
+		// }
 	]
 };

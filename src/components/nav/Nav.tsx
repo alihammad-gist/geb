@@ -7,6 +7,7 @@ import {
 	NavLink,
 } from 'reactstrap';
 import Dropdown from './HoverableDropdown';
+import { Link } from 'gatsby';
 
 export type ActivePath = string[];
 
@@ -43,8 +44,8 @@ export default function (props: Props) {
 
 			if (typeof item.children === 'undefined') {
 				return (
-					<NavItem key={item.name} active={activeItem === item.name}>
-						<NavLink href={item.href}>
+					<NavItem key={item.name}>
+						<NavLink tag={Link} to={item.href} activeClassName="gatsby-active">
 							{item.label}
 						</NavLink>
 					</NavItem>

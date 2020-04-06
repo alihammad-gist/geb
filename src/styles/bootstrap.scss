@@ -9,6 +9,34 @@
 @import "../../node_modules/bootstrap/scss/root";
 @import "../../node_modules/bootstrap/scss/reboot";
 @import "../../node_modules/bootstrap/scss/type";
+.decorated {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 50%;
+    height: 2px;
+    border-bottom: 1px dashed black;
+    content: "\a0";
+  }
+
+  &::before {
+    margin-left: -50%;
+  }
+
+  > span {
+    padding: 0.5rem;
+    background-color: $brand-green;
+    color: white;
+    display: inline-block;
+  }
+}
+
 @import "../../node_modules/bootstrap/scss/images";
 @import "../../node_modules/bootstrap/scss/code";
 @import "../../node_modules/bootstrap/scss/grid";
@@ -19,6 +47,42 @@ th {
 
 @import "../../node_modules/bootstrap/scss/forms";
 @import "../../node_modules/bootstrap/scss/buttons";
+.svg-icon {
+  display: inline-flex;
+  align-self: center;
+}
+
+.svg-icon svg {
+  height: 1em;
+  width: 1em;
+}
+
+.svg-icon.svg-baseline svg {
+  top: 0.125em;
+  position: relative;
+}
+
+.btn {
+  &:hover {
+    .arrow-forward-animate {
+      animation: forward-motion 0.8s infinite;
+    }
+  }
+}
+
+@keyframes forward-motion {
+  0% {
+    transform: translateX(0);
+  }
+
+  80% {
+    transform: translateX(20%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
 @import "../../node_modules/bootstrap/scss/transitions";
 @import "../../node_modules/bootstrap/scss/dropdown";
 @import "../../node_modules/bootstrap/scss/button-group";
@@ -42,6 +106,10 @@ th {
 .modal-footer {
   background-color: $brand-grey;
 }
+
+.modal-header {
+  text-overflow: ellipsis;
+}
 @import "../../node_modules/bootstrap/scss/tooltip";
 @import "../../node_modules/bootstrap/scss/popover";
 @import "../../node_modules/bootstrap/scss/carousel";
@@ -51,3 +119,5 @@ th {
 
 // GEB styles
 @import "./icons";
+@import "./transitions";
+@import "./scrollbar";
