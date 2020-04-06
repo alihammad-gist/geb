@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{dIdl:function(e,t,n){"use strict";n.r(t);var a=n("q1tI"),l=n.n(a),c=n("Ac47"),r=n("RnvD"),u=n("SHus");t.default=function(){return l.a.createElement(c.a,null,l.a.createElement(r.a,{title:"Team"}),l.a.createElement(u.a,{typ:u.c.Horizontal}),l.a.createElement(u.d,null))}}}]);
+//# sourceMappingURL=component---src-pages-about-team-tsx-624407143da3b34c9c1a.js.map
