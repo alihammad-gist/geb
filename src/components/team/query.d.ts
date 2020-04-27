@@ -13,6 +13,13 @@ export type Member = {
     remarks: string
     job_title: string
     job_desc: string
+    fields: {
+        slug: string
+    }
+    email: string
+    phone: string
+    linkedIn: string
+    twitter: string
 }
 
 export type QueryResult = {
@@ -22,3 +29,8 @@ export type QueryResult = {
         }[]
     }
 }
+
+export type SingularResult = {
+    strapiTeamMember: Member
+}
+

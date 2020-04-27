@@ -1,8 +1,8 @@
 import React from 'react';
-import { Report } from './query';
-import { Row, Col, Table, ListGroup, ListGroupItem } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import { Truncate } from '../text';
 import { formateDate } from '../text/formating';
+import { Report } from './query';
 
 const initialSummaryLength = 350;
 
@@ -20,26 +20,22 @@ export default ({ report, truncateSummary = false, excludeTitle = false }: Props
                     src={report.cover.publicURL}
                     className="img-fluid"
                 />
-                <ListGroup flush>
-                    <ListGroupItem>
-                    </ListGroupItem>
-                </ListGroup>
             </Col>
             <Col md="8">
                 {!excludeTitle ?
                     <>
-                        <h4 className="text-info">Title</h4>
+                        <h4 className="h5">Title</h4>
                         <p>{report.title}</p>
                     </>
                     : null}
-                <h4 className="text-info">Summary</h4>
+                <h4 className="h5">Summary</h4>
                 <Truncate
-                    max={350}
+                    max={initialSummaryLength}
                     text={report.summary}
                     expandable={true}
                 />
 
-                <h4 className="text-info">Publishing Date</h4>
+                <h4 className="h5">Publishing Date</h4>
                 <p>{formateDate(report.publishing_date)}</p>
             </Col>
         </Row>

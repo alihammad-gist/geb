@@ -10,7 +10,6 @@ type Props = {
 export default (props: Props) => {
     const { max, text, expandable, tag = 'p', ...rest } = props;
     const [isExpanded, expand] = useState(false);
-
     const exceeds = lengthChecker(max);
 
     return (
@@ -26,10 +25,13 @@ export default (props: Props) => {
                     }</span>
                     <br />
                     {expandable ?
-                        <a href='#' onClick={(e) => {
-                            e.preventDefault();
-                            expand(!isExpanded)
-                        }}>
+                        <a
+                            href='#'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                expand(!isExpanded)
+                            }}
+                        >
                             {isExpanded ? 'Read less' : 'Read more'}
                         </a>
                         : null}
@@ -40,4 +42,4 @@ export default (props: Props) => {
 }
 
 const lengthChecker =
-    (max: number) => (text: string) => text.length > max 
+    (max: number) => (text: string | null) => text ? (text.length > max) : false; 

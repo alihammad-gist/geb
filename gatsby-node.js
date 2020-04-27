@@ -1,59 +1,108 @@
-// const path = require('path');
+const path = require('path');
+
+const reportsPerListingPage = 6;
 
 module.exports = {
+	onCreateNode({ node, actions }) {
+		const { createNodeField } = actions;
 
-	// When a node (in graphql) is created.
-	// onCreateNode: function ({ node, actions }) {
-	// 	const { createNodeField } = actions
+		switch (node.internal.type) {
 
-	// 	if (node.internal.type === 'MarkdownRemark') {
-	// 		slug = path.basename(node.fileAbsolutePath, '.md');
-	// 		createNodeField({
-	// 			node,
-	// 			name: 'slug',
-	// 			value: slug,
-	// 		});
-	// 	}
-	// },
+			/** 
+			 *  Team Member
+			 * 	- Slug generation
+			 *  
+			 */
+			case 'StrapiTeamMember':
+				const slug = node.name
+					.toLowerCase()
+					.replace(/[^a-zA-Z]+/g, '-');
+				createNodeField({
+					node,
+					name: 'slug',
+					value: slug,
+				});
+				console.log(slug);
+				break;
+		}
+	},
 
-	// If one to create pages for a particular content type
-	// I suppose we'd do that in this function.
-	// createPages: async function ({ graphql, actions }) {
-	// 	const { createPage } = actions;
-	// 	const blogTemplate = path.resolve('./src/templates/blog/blog.tsx');
+	async createPages({ graphql, actions, reporter }) {
+		const { createPage } = actions;
 
-	// 	const res = await graphql(`
-	// 	query BlogPosts {
-	// 		allMarkdownRemark {
-	// 			totalCount
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						title
-	// 						date
-	// 						author
-	// 					}
-	// 					fields {
-	// 						slug
-	// 					}
-	// 					htmlAst
-	// 				}
-	// 			}
-	// 		}
-	// 	}
+		/**
+		 * Team Member
+		 * 	- Member page creation
+		 */
+		{
+			const memberTmpl = path.resolve('./src/components/team/template/member.tsx');
+			const membersRes = await graphql(`
+				query {
+					allStrapiTeamMember {
+						edges {
+						node {
+							fields {
+								slug
+							}
+						}
+						}
+					}
+				}
+			`);
 
-	// 	`);
+			if (membersRes.errors) {
+				reporter.panicOnBuild('GraphQL generated error while creating member profile pages');
+				return;
+			}
 
-	// 	console.log(res.toString());
-	// 	res.data.allMarkdownRemark.edges.forEach( ({ node }) => {
-	// 		console.log(`Creating blog page ${ node.fields.slug }`);
-	// 		createPage({
-	// 			component: blogTemplate,
-	// 			path: `/blog/${ node.fields.slug }`,
-	// 			context: {
-	// 				slug: node.fields.slug
-	// 			}
-	// 		})
-	// 	});
-	// }
+			membersRes.data.allStrapiTeamMember.edges.forEach(({ node }) => {
+				createPage({
+					component: memberTmpl,
+					path: `/about/${node.fields.slug}`,
+					context: {
+						slug: node.fields.slug,
+					}
+				})
+			});
+		}
+
+		/**
+		 * Report listing pages
+		 */
+		{
+			const reportListingTmpl = path.resolve('./src/components/reports/template/listing.tsx');
+			const reportListingRes = await graphql(`
+				query  {
+					allStrapiReport {
+						edges {
+							node {
+								id		
+							}
+						}
+					}
+				}
+			`);
+
+			if (reportListingRes.errors) {
+				reporter.panicOnBuild("GraphQL Error generating Reports listing pages");
+				return;
+			}
+
+			const reports = reportListingRes.data.allStrapiReport.edges;
+			const totalPages = Math.ceil(reports.length / reportsPerListingPage);
+			Array.from({ length: totalPages }).forEach((_, i) => {
+				createPage({
+					path: i === 0 ? '/work/reports' : `/work/reports/${i + 1}`,
+					component: reportListingTmpl,
+					context: {
+						limit: reportsPerListingPage,
+						skip: i * reportsPerListingPage,
+						totalPages,
+						currentPage: i + 1,
+					}
+				});
+			});
+		}
+
+	}
 };

@@ -1,6 +1,67 @@
+@import "../../styles/init.scss";
+
 .media {
   img {
     display: block;
     margin: 0 auto;
+  }
+}
+
+.profileIconsHeading {
+  min-width: 200px;
+}
+
+.profileIcons {
+  font-size: 3rem;
+  text-align: right;
+  // min-width: 200px;
+  flex: 0 0 150px;
+  > a {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+
+.twtIcon {
+  color: #00acee;
+  transition: color 0.5s;
+  &:hover {
+    color: darken(#00acee, 10%);
+    transition: color 0.5s;
+  }
+}
+
+.linkedInIcon {
+  color: #0e76a8;
+  transition: color 0.5s;
+  &:hover {
+    color: darken(#0e76a8, 10%);
+    transition: color 0.5s;
+  }
+}
+
+@include media-breakpoint-up("md") {
+  .profileIcons {
+    flex-shrink: 1;
+    flex-grow: 0;
+  }
+
+  .profileIconsHeading {
+    flex-shrink: 1;
+    flex-grow: 0;
+  }
+
+  .profileIconsDash {
+    // flex: 1 0 auto;
+    flex-grow: 1;
+    border-top: 5px solid rgba($brand-grey, 1);
+    align-self: center;
+  }
+}
+
+@include media-breakpoint-down("md") {
+  .profileIconsHeading,
+  .profileIconsDash {
+    display: none;
   }
 }

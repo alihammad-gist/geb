@@ -99,6 +99,11 @@ export default ({
 			<DropdownToggle
 				// Mouse click state cycle
 				{...dropdownToggleProps}
+				tag={Link}
+				to={item.href}
+				activeClassName="active"
+				partiallyActive={true}
+				onClick={(e) => e.preventDefault()}
 			>
 				{item.label}
 			</DropdownToggle>
@@ -117,10 +122,11 @@ export default ({
 					i === 'separator' ?
 						<DropdownItem divider key={idx} /> :
 						<DropdownItem
-							// active={activeSublink === i.name}
 							tag={Link}
 							to={i.href}
 							key={idx}
+							activeClassName="active"
+							partiallyActive={true}
 						>
 							{i.label}
 						</DropdownItem>

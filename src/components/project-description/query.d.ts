@@ -19,6 +19,10 @@ declare module "ProjectDescriptionExcerpt" {
         title: string;
         introduction: string;
         outcomes: Outcome[];
+        background: string;
+        objectives: string;
+        achievements: string;
+        next: string;
     }
 
     export interface Edge {
@@ -35,6 +39,10 @@ declare module "ProjectDescriptionExcerpt" {
 
     export interface QueryResult {
         data: Data;
+    }
+
+    export interface SingularResult {
+        strapiProjectDescription: Node
     }
 
 }

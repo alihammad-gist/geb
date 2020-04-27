@@ -11,9 +11,18 @@ import { MemberMedia, MemberMediaType } from '.';
 type props = {
     typ: MemberMediaType,
     centered?: boolean,
+    shadow?: boolean
+    decoratedHeading?: boolean
+    mimicReportDesign?: boolean
 }
 
-export default ({ typ, centered = false }: props) => {
+export default ({
+    typ,
+    centered = false,
+    shadow = false,
+    decoratedHeading = false,
+    mimicReportDesign = false,
+}: props) => {
     const data = useStaticQuery(graphql`
         query teamHeads {
             allStrapiTeamMember(filter: {name: {in: ["Dr. Saleem Janjua", "Ms. Naheed Shah Durrani"]}}) {
@@ -30,6 +39,9 @@ export default ({ typ, centered = false }: props) => {
                         remarks
                         job_title
                         job_desc
+                        fields {
+                            slug
+                        }
                     }
                 }
             }
@@ -48,29 +60,43 @@ export default ({ typ, centered = false }: props) => {
     }
 
     return (
-        <Section type={Type.darkOverWhite}>
+        <Section type={Type.darkOverWhite} className={shadow ? 'shadow' : ''}>
             <Container>
-                <h3 className="text-center mb-5 decorated">
-                    <span>GEB Officials</span>
+                <h3 className={`text-center mb-4 ${decoratedHeading ? "decorated" : ''}`}>
+                    <span>GEB Team</span>
                 </h3>
                 <Row className={centered ? "justify-content-center" : ''}>
                     <Col md={centered ? '5' : '6'}>
-                        <ScrollAnimation animateIn="fadeIn">
+                        <ScrollAnimation animateIn="fadeIn" animateOnce>
                             <MemberMedia
                                 typ={typ}
                                 member={sec}
                             />
                         </ScrollAnimation>
                     </Col>
-                    <Col md={centered ? '5' : '6'}>
-                        <ScrollAnimation animateIn="fadeIn" delay={300}>
-                            <MemberMedia
-                                typ={typ}
-                                member={dr}
-                            />
-                        </ScrollAnimation>
-                    </Col>
+                    {!mimicReportDesign &&
+                        <Col md={centered ? '5' : '6'}>
+                            <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce>
+                                <MemberMedia
+                                    typ={typ}
+                                    member={dr}
+                                />
+                            </ScrollAnimation>
+                        </Col>
+                    }
                 </Row>
+                {mimicReportDesign &&
+                    <Row className={`${centered ? "justify-content-center" : ''} mt-3`}>
+                        <Col md={centered ? '5' : '6'}>
+                            <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce>
+                                <MemberMedia
+                                    typ={typ}
+                                    member={dr}
+                                />
+                            </ScrollAnimation>
+                        </Col>
+                    </Row>
+                }
             </Container>
 
         </Section>

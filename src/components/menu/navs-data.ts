@@ -13,7 +13,7 @@ export const primary: NavigationItem[] = [
 		children: [
 			{
 				name: 'project-desc',
-				href: '/project-desc',
+				href: '/about/project-desc',
 				label: 'Project Description',
 			},
 			{
@@ -29,19 +29,19 @@ export const primary: NavigationItem[] = [
 			{
 				name: 'team',
 				href: '/about/team',
-				label: 'Our Team',
+				label: 'GEB Team',
 			},
 		]
 
 	},
 	{
 		name: 'our-work',
-		href: '/our-work',
+		href: '/work',
 		label: 'Our Work',
 		children: [
 			{
 				name: 'reports',
-				href: '/reports',
+				href: '/work/reports',
 				label: 'Reports',
 			},
 			{
@@ -52,7 +52,7 @@ export const primary: NavigationItem[] = [
 			'separator',
 			{
 				name: 'publications',
-				href: '/publications',
+				href: '/work/extrn-publications',
 				label: 'Important Publications',
 			},
 		],
@@ -64,7 +64,7 @@ export const primary: NavigationItem[] = [
 		children: [
 			{
 				name: 'activities',
-				href: '/activities',
+				href: '/news/activities',
 				label: 'Activities'
 			},
 			{

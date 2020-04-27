@@ -1,2 +1,2 @@
-export { default as Homepage } from './Homepage';
 export { default as OutcomeSlide } from './outcome-slide';
+export { default as ProjectDocumentation } from './documentation';

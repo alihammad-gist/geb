@@ -89,10 +89,40 @@ th {
 @import "../../node_modules/bootstrap/scss/input-group";
 @import "../../node_modules/bootstrap/scss/custom-forms";
 @import "../../node_modules/bootstrap/scss/nav";
+.sub-nav {
+  margin-top: 2rem;
+  li {
+    a {
+      color: black;
+      font-family: $font-family-serif;
+      font-size: 1rem;
+
+      &.active {
+        color: $brand-blue;
+      }
+    }
+
+    &.active,
+    &:hover,
+    &:focus {
+      a {
+        color: $brand-blue;
+      }
+    }
+  }
+}
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/card";
 @import "../../node_modules/bootstrap/scss/breadcrumb";
 @import "../../node_modules/bootstrap/scss/pagination";
+.page-item {
+  &:first-child,
+  &:last-child {
+    .page-link {
+      border-radius: 0;
+    }
+  }
+}
 @import "../../node_modules/bootstrap/scss/badge";
 @import "../../node_modules/bootstrap/scss/jumbotron";
 @import "../../node_modules/bootstrap/scss/alert";

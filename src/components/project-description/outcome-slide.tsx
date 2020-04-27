@@ -20,7 +20,7 @@ export default ({ outcome }: Props) => {
             backgroundImage: `url("${outcome.slider_background.publicURL}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            padding: "6rem 0"
+            padding: "4rem 0",
         }}
             className={styles.slide}>
             <Container>

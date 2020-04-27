@@ -1,7 +1,7 @@
 @import "../../styles/init.scss";
 
 .bodyContent {
-  min-height: 80vh;
+  min-height: 50vh;
 }
 
 .texture {
@@ -26,8 +26,8 @@
   background-color: $brand-grey;
 }
 
-.darkOverGray {
-  background-color: #fff;
+.darkOverAltGray {
+  background-color: $brand-alt-grey;
 }
 
 .lightOverDark {

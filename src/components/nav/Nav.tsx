@@ -45,7 +45,7 @@ export default function (props: Props) {
 			if (typeof item.children === 'undefined') {
 				return (
 					<NavItem key={item.name}>
-						<NavLink tag={Link} to={item.href} activeClassName="gatsby-active">
+						<NavLink tag={Link} to={item.href} activeClassName="active">
 							{item.label}
 						</NavLink>
 					</NavItem>

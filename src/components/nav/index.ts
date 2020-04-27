@@ -11,3 +11,7 @@ export {
 export {
 	default as FooterNav
 } from './FooterNav';
+
+export {
+	default as PaginationNav
+} from './pagination';

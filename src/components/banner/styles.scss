@@ -102,9 +102,7 @@
 }
 
 .banner-cto {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: -65px;
+  position: relative;
   z-index: 100;
 }

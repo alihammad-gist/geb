@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 
 import { CarouselItem, Carousel, CarouselControl, Button } from 'reactstrap';
 import { OutcomeSlide } from '../project-description';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { QueryResult } from 'ProjectDescriptionExcerpt';
 
 import './styles.scss';
 import { MdDescription, MdSubject, MdArrowForward } from 'react-icons/md';
+import { DefaultTooltip } from '../text';
 
 
 
@@ -104,17 +105,25 @@ export default () => {
 				/>
 
 			</Carousel>
-			<div className='banner-cto'>
+			<div className='container banner-cto'>
 				<Button
 					size="lg"
 					color="primary"
-					className="shadow"
+					className="shadow float-right"
+					id="project_details_cto"
+					tag={Link}
+					to="/about/project-desc"
 				>
-					Read Project Details
+					Project Description
 					<span className="svg-icon svg-baseline ml-2 arrow-forward-animate">
 						<MdArrowForward />
 					</span>
 				</Button>
+				<DefaultTooltip
+					target="project_details_cto"
+				>
+					Click this button to read Project Description in further detail.
+				</DefaultTooltip>
 			</div>
 		</div>
 	);

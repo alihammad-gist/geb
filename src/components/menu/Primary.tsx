@@ -20,7 +20,7 @@ export default () => {
 
 
 	return (
-		<Navbar light expand="md" className={`${styles.primary} shadow`}>
+		<Navbar light expand="md" className={`pb-2 ${styles.primary}`}>
 			<Container className={styles.topBar}>
 				<NavbarBrand href='/' >
 					<Logo />

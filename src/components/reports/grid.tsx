@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { Section, SectionType } from '../layout';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { QueryResult } from './query';
 import * as styles from './styles.module.scss';
 import { GridItem } from '.';
@@ -47,7 +47,7 @@ export default () => {
         <Section type={SectionType.darkOverGray} className={styles.reportGridSection}>
             <Container>
 
-                <h2 className="text-center mb-5"> Reports</h2>
+                <h2 className="text-center mb-4"> Reports</h2>
                 <Row>
                     {data.allStrapiReport.edges.map(({ node }, idx) => (
                         <Col
@@ -60,6 +60,7 @@ export default () => {
                             <ScrollAnimation
                                 animateIn="fadeInUp"
                                 delay={idx * 120}
+                                animateOnce
                             >
                                 <GridItem report={node} key={idx} />
                             </ScrollAnimation>
@@ -71,6 +72,8 @@ export default () => {
                         <Button
                             className="float-right"
                             color="primary"
+                            tag={Link}
+                            to="/work/reports"
                         >
                             More Reports and Studies
                            <span className="svg-icon svg-baseline ml-2 arrow-forward-animate">

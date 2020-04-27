@@ -35,6 +35,13 @@
       transform: translateY(-50%);
     }
 
+    &.active {
+      color: $brand-blue;
+      &:hover {
+        color: white;
+      }
+    }
+
     @include hover-focus() {
       transition: background-color 0.5s ease;
       background-color: $brand-blue;

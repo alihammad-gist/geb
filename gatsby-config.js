@@ -82,10 +82,12 @@ module.exports = {
 					`project-description`,
 					`activity`,
 					`report`,
+					`external-publication`
 					// `member`
 				]
 			},
 		},
+		`gatsby-plugin-anchor-links`,
 		// {
 		// 	resolve: `gatsby-plugin-purgecss`,
 		// 	options: {

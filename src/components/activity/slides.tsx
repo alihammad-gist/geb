@@ -55,7 +55,7 @@ query activitesList {
         return (
             <CarouselItem className='my-4' key={j}>
                 <Container>
-                    <Row noGutters>
+                    <Row noGutters style={{ marginRight: "-0.25rem", marginLeft: "-0.25rem" }}>
                         {
                             isBrowser && group.map(({ node }, idx) => (
                                 <Col
@@ -73,35 +73,31 @@ query activitesList {
                                                 animationInDelay: idx * 150,
                                                 animationInDuration: 500
                                             },
-                                            [
+                                            <a className={`${styles.slide} m-1`} href="#">
+                                                <img
+                                                    src={node.Cover.file.publicURL}
+                                                    alt={node.Cover.captions}
+                                                    className={styles.slideCover}
+                                                />
+                                                <h6 className={styles.slideTitle}>{node.title}</h6>
 
-                                                <a className={`${styles.slide} m-1`} href="#">
-                                                    <img
-                                                        src={node.Cover.file.publicURL}
-                                                        alt={node.Cover.captions}
-                                                        className={styles.slideCover}
-                                                    />
-                                                    <h5 className={styles.slideTitle}>{node.title}</h5>
-
-                                                    <div className={styles.slideMeta}>
-                                                        <span className={styles.slideVenue}>
-                                                            <MdPlace size="1rem" />
-                                                            &nbsp;
+                                                <div className={styles.slideMeta}>
+                                                    <span className={styles.slideVenue}>
+                                                        <MdPlace size="1rem" />
+                                                        &nbsp;
                                                 <span
-                                                                style={{ verticalAlign: "middle", lineHeight: '100%' }}>
-                                                                {node.venue}
-                                                            </span>
+                                                            style={{ verticalAlign: "middle", lineHeight: '100%' }}>
+                                                            {node.venue}
                                                         </span>
-                                                    </div>
+                                                    </span>
+                                                </div>
 
-                                                    <div className={styles.slideTagContainer}>
-                                                        <span className={`${styles.slideTag} badge badge-dark`}>
-                                                            {node.activity_types[0].name}
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            ]
-
+                                                <div className={styles.slideTagContainer}>
+                                                    <span className={`${styles.slideTag} badge badge-dark`}>
+                                                        {node.activity_types[0].name}
+                                                    </span>
+                                                </div>
+                                            </a>
                                         )
                                     }
                                 </Col>
@@ -138,7 +134,7 @@ query activitesList {
     return (
         <Section type={Type.darkOverWhite}>
             <Container>
-                <h2 className="text-center mb-4 decorated">
+                <h2 className="text-center mb-3">
                     <span>Highlights</span>
                 </h2>
             </Container>

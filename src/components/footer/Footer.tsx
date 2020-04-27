@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 
 import { Footer as FooterAffiliates } from '../affiliates';
-import { 
+import {
 	General as GeneralNav,
 	Activities as ActivitiesNav
 } from '../menu';
@@ -24,11 +24,11 @@ export default () => {
 					<Col md="3"><GeneralNav /></Col>
 					<Col md="3"><ActivitiesNav /></Col>
 					<Col md="3" className="ml-auto">
-						<FooterIcons />	
+						<FooterIcons />
 					</Col>
 				</Row>
 			</Container>
-			<p>Created by Ali Hammad, © 2020</p>
+			<p className='text-center'>Copyright Generating Environmental Benefits, GEB © 2020</p>
 		</footer>
 	)
 }

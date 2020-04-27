@@ -12,13 +12,13 @@
   z-index: 99;
 
   @include hover-focus-active {
-    @include z-depth(16);
+    @include z-depth(8);
     @include z-depth-transition();
 
     z-index: 100;
     transition-property: box-shadow, transform, z-index;
     transition-duration: 0.4s;
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
 }
 
