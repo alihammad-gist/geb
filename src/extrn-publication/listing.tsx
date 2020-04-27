@@ -63,7 +63,7 @@ export default () => {
                                 <Media left className="mr-2">
                                     <img
                                         className="img-fluid img-thumbnail rounded-lg"
-                                        style={{ maxWidth: "150px" }}
+                                        style={{ maxWidth: "200px" }}
                                         src={node.cover.publicURL}
                                         alt={`Cover image for ${node.title}`}
                                     />

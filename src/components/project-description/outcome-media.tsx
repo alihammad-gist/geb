@@ -23,13 +23,12 @@ export default ({ outcome, num }: { outcome: Outcome, num: number }) => {
                 <small>Outcome {num}: </small>
                 {outcome.title}
             </h4> */}
-            <p>
+            <p className="text-justify">
                 <img
                     src={outcome.cover.publicURL}
-                    className="img-fluid float-left img-thumbnail mr-2 mb-2 rounded-0"
+                    className="img-fluid float-right img-thumbnail ml-2 mb-2 rounded-0"
                     style={{ maxWidth: '160px', verticalAlign: 'top', }}
                 />
-
                 {outcome.body}
             </p>
 

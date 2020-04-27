@@ -106,7 +106,10 @@ export default () => {
                                                     isVisible={k == activeTab}
                                                 >
                                                     <h2 id={k} className="mb-4 text-primary">{navItems[k]}</h2>
-                                                    <ReactMarkdown source={markdown} />
+                                                    <ReactMarkdown
+                                                        className="text-justify"
+                                                        source={markdown}
+                                                    />
                                                 </Animated>
                                             </TabPane>
                                         );
