@@ -70,8 +70,12 @@
   position: relative;
   display: flex;
   flex-direction: column-reverse;
+  transition: border-radius 0.8s;
+  border-radius: 0;
   &:hover {
     text-decoration: none;
+    border-radius: 1rem;
+    transition: border-radius 0.8s;
   }
 }
 

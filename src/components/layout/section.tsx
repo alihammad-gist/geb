@@ -20,7 +20,7 @@ type Props = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default (props: Props) => {
-    const className = `${Style[props.type]} ${props.className ?? ''} clearfix py-4 `
+    const className = `${Style[props.type]} ${props.className ? props.className : ''} clearfix py-4 `
     const { className: _, ...rest } = props;
 
     return (

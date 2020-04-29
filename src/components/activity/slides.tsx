@@ -132,9 +132,9 @@ query activitesList {
     }
 
     return (
-        <Section type={Type.darkOverWhite}>
+        <Section type={Type.darkOverWhite} className="mt-4">
             <Container>
-                <h2 className="text-center mb-3">
+                <h2 className="text-center mb-2">
                     <span>Highlights</span>
                 </h2>
             </Container>

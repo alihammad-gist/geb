@@ -82,7 +82,8 @@ module.exports = {
 					`project-description`,
 					`activity`,
 					`report`,
-					`external-publication`
+					`external-publication`,
+					`quote`,
 					// `member`
 				]
 			},

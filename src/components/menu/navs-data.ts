@@ -18,12 +18,12 @@ export const primary: NavigationItem[] = [
 			},
 			{
 				name: 'msg-npd',
-				href: '/message-npd',
+				href: '/about/message-npd',
 				label: 'Message from NPD',
 			},
 			{
 				name: 'msg-npc',
-				href: '/message-npc',
+				href: '/about/message-npc',
 				label: 'Message from NPC',
 			},
 			{
