@@ -1,0 +1,8 @@
+@import '../../styles/init.scss';
+
+.footer {
+	@include clearfix();
+	background: url('./images/textures/footer_lodyas.png');
+	min-height: 250px;
+	padding: 1rem;
+}

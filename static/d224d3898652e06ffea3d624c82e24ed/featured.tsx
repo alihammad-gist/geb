@@ -1,0 +1,44 @@
+import React from 'react';
+import { Section, SectionType } from '../layout';
+import { Container, Row, Col } from 'reactstrap';
+import { Blog } from './query';
+import dayjs from 'dayjs';
+import { AuthorMedia } from '../team';
+
+export default ({ blog }: { blog: Blog }) => {
+    return (
+        <Section
+            type={SectionType.darkOverWhite}
+            className="px-4"
+        >
+            <Container>
+                <Row noGutters>
+                    <Col md="6" className="pr-md-4">
+                        <div className="clearfix">
+                            <p className="float-left text-muted mb-0" style={{ fontSize: '1.2rem' }}>
+                                Featured Story
+                        </p>
+                            <p className="h6 float-right mb-0">
+                                {dayjs(blog.created_at).format("dddd MMMM Do, YYYY")}
+                            </p>
+                        </div>
+                        <h2 className="h4 border-top pt-2">
+                            <a href='#'>
+                                {blog.title}
+                            </a>
+                        </h2>
+                        <p className='text-justify'>{blog.body_abstract}...</p>
+                        <AuthorMedia author={blog.author} />
+                    </Col>
+                    <Col md="6" className="d-flex bg-white img-thumbnail">
+                        <img
+                            src={blog.cover.file.publicURL}
+                            alt={blog.cover.caption}
+                            className="img-fluid"
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </Section>
+    );
+}

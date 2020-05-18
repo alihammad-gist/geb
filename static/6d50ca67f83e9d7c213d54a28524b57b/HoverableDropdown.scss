@@ -1,0 +1,78 @@
+@import "../../styles/init";
+
+.hoverable-menu {
+  @include media-breakpoint-up(md) {
+    .dropdown-menu {
+      top: 99%;
+      margin: 0;
+
+      &.closing {
+        animation-duration: 0.5s;
+        animation-name: dropdownInactive;
+        animation-fill-mode: forwards;
+      }
+
+      &.opened {
+        animation-duration: 0.3s;
+        animation-name: dropdownActive;
+      }
+    }
+  }
+
+  .dropdown-item {
+    position: relative;
+    background-color: white;
+    transition-property: background-color 0.5s ease;
+
+    &:before {
+      @include caret-right();
+      border-color: transparent;
+      display: inline-block;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    &.active {
+      color: $brand-blue;
+      &:hover {
+        color: white;
+      }
+    }
+
+    @include hover-focus() {
+      transition: background-color 0.5s ease;
+      background-color: $brand-blue;
+
+      &:before {
+        border-left-color: white;
+      }
+    }
+  }
+}
+
+@keyframes dropdownInactive {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@keyframes dropdownActive {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

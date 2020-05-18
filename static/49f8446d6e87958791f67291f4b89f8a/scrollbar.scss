@@ -1,0 +1,19 @@
+@import "../../node_modules/react-perfect-scrollbar/dist/css/styles.css";
+
+.ps .ps__rail-x,
+.ps .ps__rail-y {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.ps .ps__thumb-x,
+.ps .ps__thumb-y {
+    background-color: rgba($brand-green, 0.9) !important;
+}
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x {
+    background-color: rgba($brand-green, 1) !important;
+    height: 11px;
+}

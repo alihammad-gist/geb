@@ -1,0 +1,40 @@
+@import "../../styles/init.scss";
+
+.bodyContent {
+  min-height: 50vh;
+}
+
+.texture {
+  background-color: $brand-grey;
+}
+
+.heading {
+  text-align: center;
+  font-weight: 600;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    border-bottom: 3px solid $brand-green;
+  }
+}
+
+.darkOverGray {
+  background-color: $brand-grey;
+}
+
+.darkOverAltGray {
+  background-color: $brand-alt-grey;
+}
+
+.lightOverDark {
+  background-color: rgb(73, 73, 73);
+  color: white;
+}
+
+.darkOverWhite {
+  color: inherit;
+}

@@ -1,0 +1,208 @@
+@import "../../../styles/init.scss";
+
+$reflection_tilt: 40deg;
+
+.section {
+    // height must be unspecified
+    // it must take exactly the same height
+    // as .member-viewer
+}
+
+.navigatorContainer {
+    margin-top: -180px;
+}
+
+.memberViewerContainer {
+    height: 600px;
+    position: relative;
+}
+
+.carouselContainer {
+    // margin-top: 8rem;
+    height: 290px;
+    max-width: 700px;
+    margin: 0 auto;
+
+    * {
+        opacity: 1 !important;
+    }
+    position: relative;
+    z-index: 18;
+}
+
+.controlsContainer {
+    position: relative;
+    font-size: 6rem;
+    text-align: center;
+    z-index: 20;
+    margin-top: -8.5rem;
+    // background: red;
+}
+
+.controlLeft,
+.controlRight {
+    cursor: pointer;
+    color: rgba($brand-green, 0.6);
+    transition-property: color;
+    transition-duration: 600ms;
+    @include hover-focus {
+        color: rgba($brand-green, 1);
+        transition-property: color;
+        transition-duration: 600ms;
+    }
+}
+
+.controlRight:hover,
+.controlLeft:hover {
+    // animation-name: forwardPulse;
+    // animation-duration: 500ms;
+    // animation-timing-function: ease;
+    // animation-fill-mode: forward;
+}
+
+.controlLeft:hover {
+    animation-direction: reverse;
+}
+
+.slide {
+    &:not(.slideActive) {
+        opacity: 0.3 !important;
+        &:hover {
+            opacity: 0.8 !important;
+        }
+    }
+
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    padding: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+
+        img {
+            filter: grayscale(20%);
+            transform: scale(1.05);
+            @include z-depth(6);
+            transition: all 150ms ease;
+        }
+
+        .slideReflection {
+            transform: scaleX(1.05) scaley(-1.05) rotateX($reflection_tilt) !important;
+        }
+    }
+
+    // -webkit-filter: grayscale(100%);
+    // -moz-filter: grayscale(100%);
+    //     -o-filter: grayscale(100%);
+    // -ms-filter: grayscale(100%);
+
+    img {
+        filter: grayscale(60%);
+        transform: scale(1);
+        transition: all 150ms ease;
+        display: inline-block;
+
+        @include z-depth(2);
+    }
+}
+
+.slideActive {
+    &:hover {
+        img {
+            transform: scale(1) !important;
+        }
+    }
+    img {
+        filter: grayscale(0);
+        @include z-depth(8);
+        transition-property: all;
+        transition-duration: 500ms;
+        margin-bottom: 0;
+    }
+}
+
+.slideReflection {
+    transform: scaleX(1) scaleY(-1) rotateX($reflection_tilt) !important;
+    mask-image: linear-gradient(transparent, transparent, rgba($brand-grey, 0.1), rgba($brand-grey, 0.3));
+    max-width: 140px;
+    margin: -1rem auto 0 auto;
+
+    .slideActive & {
+        mask-image: linear-gradient(transparent, transparent, rgba($brand-grey, 0.1), rgba($brand-grey, 0.3));
+    }
+
+    .slideActive:hover & {
+        transform: scaleX(1) scaleY(-1) rotateX($reflection_tilt) !important;
+    }
+}
+
+@keyframes pointOut {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(-20%);
+    }
+}
+
+@keyframes forwardPulse {
+    0% {
+        transform: translateX(0);
+        color: black;
+    }
+    80% {
+        transform: translateX(5%);
+        color: $brand-green;
+    }
+    0% {
+        transform: translateX(0);
+        color: black;
+    }
+}
+
+.viewerLayer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.viewerName {
+    font-size: 6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-family: $font-family-sans-serif;
+    white-space: nowrap;
+    margin-top: 50px;
+    color: rgba(#eee, 0.5);
+}
+
+.viewerImg {
+    mask-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(black, 0.3), transparent);
+    max-width: 350px;
+    height: auto;
+    display: block;
+    filter: grayscale(0.8) contrast(80%);
+    margin: 0 auto;
+
+    @include z-depth(3);
+}
+
+.viewerDesc {
+    overflow: visible;
+    // background-color: rgba(255, 255, 255, 0.9);
+    width: 475px;
+    height: 400px;
+    float: right;
+    margin-top: 1.2rem;
+
+    p {
+        font-weight: 0.8rem;
+    }
+
+    // @include z-depth(3);
+}

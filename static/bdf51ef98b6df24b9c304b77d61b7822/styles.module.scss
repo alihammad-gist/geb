@@ -1,0 +1,63 @@
+@import "../../styles/init.scss";
+
+.primary {
+  font-family: $font-family-serif;
+  font-size: 1.1rem;
+
+  :global {
+    .navbar-nav .nav-item .nav-link {
+      font-weight: 600;
+    }
+  }
+}
+
+.topBar {
+  align-items: flex-end !important;
+}
+
+.menuContainer {
+  border-top: 1px solid $brand-grey;
+  border-bottom: 1px solid $brand-grey;
+
+  ul {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  li {
+    // margin-left: 1rem;
+  }
+}
+
+// @include media-breakpoint-up("md") {
+//   .menuContainer {
+//     justify-content: space-between;
+//     align-items: flex-end;
+//   }
+
+//   .menus {
+//     flex: 1 0 35%;
+//     display: flex;
+//     justify-content: space-between;
+//   }
+
+//   .menuLeft {
+//   }
+
+//   .menuRight {
+//   }
+
+//   .logo {
+//     // margin-bottom: -52px;
+//     z-index: 2;
+//     background: white;
+//     padding-bottom: 16px;
+//     border-radius: 8px;
+
+//     flex: 0 1 30%;
+//     text-align: center;
+//     img {
+//       max-width: 200px;
+//     }
+//   }
+// }
