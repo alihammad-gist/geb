@@ -3,6 +3,7 @@ import { Blog } from './query';
 import { Section, SectionType } from '../layout';
 import { Container, Row, Col } from 'reactstrap';
 import { readableLink } from '../text/links';
+import { Link } from 'gatsby';
 
 export default ({ blogs }: { blogs: Blog[] }) => {
     return (
@@ -12,9 +13,9 @@ export default ({ blogs }: { blogs: Blog[] }) => {
                     <Row key={idx} className="py-4 border-bottom">
                         <Col md="8">
                             <h3 className="h4">
-                                <a href={`/media/blog/${blog.slug}`}>
+                                <Link to={`/media/blog/${blog.slug}`}>
                                     {blog.title}
-                                </a>
+                                </Link>
                             </h3>
                             <p className="text-justify mb-0">{blog.body_abstract}...</p>
                         </Col>

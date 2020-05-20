@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Blog } from './query';
 import dayjs from 'dayjs';
 import { AuthorMedia } from '../team';
+import { Link } from 'gatsby';
 
 export default ({ blog }: { blog: Blog }) => {
     return (
@@ -23,9 +24,9 @@ export default ({ blog }: { blog: Blog }) => {
                             </p>
                         </div>
                         <h2 className="h4 border-top pt-2">
-                            <a href={`/media/blog/${blog.slug}`}>
+                            <Link to={`/media/blog/${blog.slug}`}>
                                 {blog.title}
-                            </a>
+                            </Link>
                         </h2>
                         <p className='text-justify'>{blog.body_abstract}...</p>
                         <AuthorMedia author={blog.author} />
