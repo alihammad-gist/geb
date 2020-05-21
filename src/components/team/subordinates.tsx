@@ -12,7 +12,7 @@ export default () => {
 
     const data = useStaticQuery(graphql`
     query teamSubordinates {
-            allStrapiTeamMember(filter: {name: {nin: ["Dr. Saleem Janjua", "Ms. Naheed Shah Durrani"]}} ) {
+            allStrapiTeamMember(filter: {id: {nin: ["Team-member_1", "Team-member_2"]}} ) {
                 edges {
                     node {
                         name

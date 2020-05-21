@@ -16,7 +16,7 @@ export default ({ member }: props) => {
             <Section type={SectionType.darkOverGray}>
                 <Container>
                     <Row>
-                        <Col md="5">
+                        <Col md="5" className="text-center">
                             <img
                                 src={member.Image.file.publicURL}
                                 className="img-fluid" />

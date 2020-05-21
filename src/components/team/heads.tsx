@@ -25,9 +25,10 @@ export default ({
 }: props) => {
     const data = useStaticQuery(graphql`
         query teamHeads {
-            allStrapiTeamMember(filter: {name: {in: ["Dr. Saleem Janjua", "Ms. Naheed Shah Durrani"]}}) {
+            allStrapiTeamMember(filter: {id: {in: ["Team-member_1", "Team-member_2"]}}) {
                 edges {
                     node {
+                        id
                         name
                         Image {
                             file {
@@ -51,7 +52,7 @@ export default ({
     let dr: Member,
         sec: Member;
 
-    if (data.allStrapiTeamMember.edges[0].node.id == 'Team-member_1') {
+    if (data.allStrapiTeamMember.edges[0].node.id == 'Team-member_2') {
         dr = data.allStrapiTeamMember.edges[1].node;
         sec = data.allStrapiTeamMember.edges[0].node;
     } else {
@@ -66,7 +67,7 @@ export default ({
                     <span>GEB Team</span>
                 </h3>
                 <Row className={centered ? "justify-content-center" : ''}>
-                    <Col md={centered ? '5' : '6'}>
+                    <Col md={centered ? '6' : '6'}>
                         <ScrollAnimation animateIn="fadeIn" animateOnce>
                             <MemberMedia
                                 typ={typ}
@@ -75,7 +76,7 @@ export default ({
                         </ScrollAnimation>
                     </Col>
                     {!mimicReportDesign &&
-                        <Col md={centered ? '5' : '6'}>
+                        <Col md={centered ? '6' : '6'}>
                             <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce>
                                 <MemberMedia
                                     typ={typ}

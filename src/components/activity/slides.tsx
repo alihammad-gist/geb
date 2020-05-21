@@ -8,6 +8,8 @@ import { Type } from '../layout/section';
 import { QueryResult } from './query';
 import * as styles from './styles.module.scss';
 import { Animated } from 'react-animated-css';
+import { Link } from 'gatsby';
+import { readableLink } from '../text/links';
 
 
 const itemsPerGrid = 6;
@@ -73,7 +75,7 @@ query activitesList {
                                                 animationInDelay: idx * 150,
                                                 animationInDuration: 500
                                             },
-                                            <a className={`${styles.slide} m-1`} href="#">
+                                            <Link className={`${styles.slide} m-1`} to={`/work/activities/${readableLink(node.title)}`}>
                                                 <img
                                                     src={node.Cover.file.publicURL}
                                                     alt={node.Cover.captions}
@@ -97,7 +99,7 @@ query activitesList {
                                                         {node.activity_types[0].name}
                                                     </span>
                                                 </div>
-                                            </a>
+                                            </Link>
                                         )
                                     }
                                 </Col>

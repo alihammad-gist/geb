@@ -6,23 +6,13 @@ import { Outcome } from 'ProjectDescriptionExcerpt';
 export default ({ outcome, num }: { outcome: Outcome, num: number }) => {
     return (
         <li style={{ listStyle: "none" }} className="mb-4">
-            <Media>
-                <Media left className="mr-2">
-                    <h4>
-                        <small>Outcome {num}: </small>
-                    </h4>
-                </Media>
-                <Media body>
-                    <h4>
-
-                        {outcome.title}
-                    </h4>
-                </Media>
-            </Media>
             {/* <h4>
                 <small>Outcome {num}: </small>
                 {outcome.title}
             </h4> */}
+            <h4>
+                Outcome {num}: {outcome.title}
+            </h4>
             <p className="text-justify">
                 <img
                     src={outcome.cover.publicURL}

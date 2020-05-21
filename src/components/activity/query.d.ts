@@ -17,6 +17,7 @@ export type Activity = {
     description: string
     Cover: Cover
     activity_types: [ActivityType, ...ActivityType[]] // at least one activity type exists
+    press_coverages: PressCoverage[]
 }
 
 export type QueryResult = {

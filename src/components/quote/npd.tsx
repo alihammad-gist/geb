@@ -7,9 +7,10 @@ export default () => {
 
     const data = useStaticQuery(graphql`
         query npdQuote {
-            strapiQuote(team_member: {name: {eq: "Ms. Naheed Shah Durrani"}}) {
+            strapiQuote(team_member: {id: {eq: 2}}) {
                 message
                 team_member {
+                    id
                     job_desc
                     job_title
                     name

@@ -46,10 +46,10 @@ export const primary: NavigationItem[] = [
 			},
 			{
 				name: 'stories',
-				href: '/stories',
-				label: 'Success Stories',
+				href: '/work/success-story',
+				label: 'Success Story',
 			},
-			'separator',
+			// 'separator',
 			{
 				name: 'publications',
 				href: '/work/extrn-publications',
@@ -59,23 +59,23 @@ export const primary: NavigationItem[] = [
 	},
 	{
 		name: 'news',
-		href: '/news',
+		href: '/media',
 		label: 'News & Media',
 		children: [
 			{
 				name: 'activities',
-				href: '/news/activities',
+				href: '/media/activities',
 				label: 'Activities'
 			},
 			{
 				name: 'blog',
-				href: '/blog',
+				href: '/media/blog',
 				label: 'Blog',
 			},
-			'separator',
+			// 'separator',
 			{
 				name: 'press-coverage',
-				href: '/press-coverage',
+				href: '/media/coverage',
 				label: 'GEB in Press',
 			},
 		],

@@ -29,31 +29,27 @@ export default ({ quote, title }: props) => {
                     <h2 className="text-right">{title}</h2>
                 }
                 <Row>
-                    <Col md="4">
+                    <Col md="5" className="text-center">
                         <img
                             src={quote.team_member.Image.file.publicURL}
                             alt={quote.team_member.Image.caption}
                             className="img-fluid"
                         />
-                        <div
-                            className="text-center"
-                        >
-                            <h4 className="mb-0 mt-2">
-                                <Link to={`/about/${slug}`}>
-                                    {quote.team_member.name}
-                                </Link>
-                            </h4>
-                            <p className="mb-0">{quote.team_member.job_title}</p>
-                            <p>
-                                <small
-                                    dangerouslySetInnerHTML={{
-                                        __html: quote.team_member.job_desc
-                                    }}
-                                />
-                            </p>
-                        </div>
+                        <h4 className="mb-0 mt-2">
+                            <Link to={`/about/${slug}`}>
+                                {quote.team_member.name}
+                            </Link>
+                        </h4>
+                        <p className="mb-0">{quote.team_member.job_title}</p>
+                        <p>
+                            <small
+                                dangerouslySetInnerHTML={{
+                                    __html: quote.team_member.job_desc
+                                }}
+                            />
+                        </p>
                     </Col>
-                    <Col md="8">
+                    <Col md="7">
                         <blockquote
                             className={`blockquote text-justify ${styles.message}`}
                         >

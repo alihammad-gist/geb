@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, ModalProps, Media } from 'reactstrap';
-import { Truncate } from '../components/text';
+import { Truncate } from '../text';
 import { MdFileDownload } from 'react-icons/md';
 
 type props = {

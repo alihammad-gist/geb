@@ -1,14 +1,16 @@
 import React from 'react';
-import { Layout, Section, SectionType } from '../../components/layout';
+import { Col, Container, Row } from 'reactstrap';
 import Head from '../../components/head';
-import { Container, Row, Col } from 'reactstrap';
+import { Layout, Section, SectionType } from '../../components/layout';
 import { WorkMenu } from '../../components/menu';
-import { ExtrnPublicationListing } from '../../components/extrn-publication';
+import { SingleSuccessStory } from '../../components/success-story';
+import { SuccessStoryBanner } from '../../components/banner';
 
 export default () => {
     return (
         <Layout>
             <Head title="Important Publications" />
+            <SuccessStoryBanner />
             <Section type={SectionType.darkOverWhite}>
                 <Container>
                     <Row>
@@ -16,7 +18,7 @@ export default () => {
                             <WorkMenu />
                         </Col>
                         <Col md="9">
-                            <ExtrnPublicationListing />
+                            <SingleSuccessStory />
                         </Col>
                     </Row>
                 </Container>
