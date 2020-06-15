@@ -1,0 +1,84 @@
+import { graphql, useStaticQuery, Link } from 'gatsby';
+import { QueryResult } from './query';
+import React from 'react';
+import { Row, Col, Container, Media } from 'reactstrap';
+import { Section, SectionType } from '../layout';
+import { Truncate } from '../text';
+import { MdEmail, MdPhone } from 'react-icons/md';
+
+
+export default () => {
+    const data = useStaticQuery(graphql`
+        query teamHeadsAlt {
+            allStrapiTeamMember(
+                filter: {id: {in: ["Team-member_2", "Team-member_1"]}},
+                sort: {order: DESC, fields: id}
+            ) {
+                edges {
+                    node {
+                        id
+                        name
+                        Image {
+                            file {
+                                publicURL
+                            }
+                            caption
+                        }
+                        about
+                        remarks
+                        job_title
+                        job_desc
+                        fields {
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    `) as QueryResult;
+    return (
+        <Section type={SectionType.darkOverWhite}>
+            <Container>
+                {data.allStrapiTeamMember.edges.map(({ node }, idx) => (
+                    <Row>
+                        <Col md="10" className="my-3 border-bottom">
+                            <Media>
+                                <Media left className='mr-3 text-center' style={{ width: '300px' }}>
+                                    <img
+                                        src={node.Image.file.publicURL}
+                                        className="rounded-circle img-fluid img-thumbnail"
+                                        style={{ maxWidth: '175px' }}
+                                    />
+                                    <p className="mb-0">
+                                        {node.job_title}
+                                    </p>
+                                    <p>
+                                        <small
+                                            dangerouslySetInnerHTML={{
+                                                __html: node.job_desc
+                                            }}
+                                        />
+                                    </p>
+
+                                </Media>
+
+                                <Media body>
+                                    <h4><Link to={`/about/${node.fields.slug}`}>{node.name}</Link></h4>
+                                    <Truncate
+                                        text={node.about}
+                                        expandable={false}
+                                        max={275}
+                                        className="text-justify"
+                                    />
+                                    <MdEmail /> &nbsp;
+                                    <MdPhone /> &nbsp;
+                                </Media>
+
+                            </Media>
+                        </Col>
+                    </Row>
+                ))}
+            </Container>
+        </Section>
+    );
+}
