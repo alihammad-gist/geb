@@ -1,0 +1,53 @@
+@import "../../styles/init.scss";
+
+.reportGridItem {
+  @include z-depth-transition();
+  @include z-depth(2);
+
+  display: block;
+  position: relative;
+  transition-property: box-shadow, transform, z-index;
+  transition-duration: 0.8s;
+  transform: scale(1);
+  z-index: 99;
+
+  @include hover-focus-active {
+    @include z-depth(8);
+    @include z-depth-transition();
+
+    z-index: 100;
+    transition-property: box-shadow, transform, z-index;
+    transition-duration: 0.4s;
+    transform: scale(1.05);
+  }
+}
+
+.reportGridSection {
+  background: url(./assets/background.png) no-repeat;
+  background-position: right center;
+  background-size: 100% 100%;
+}
+
+.itemContainer:hover {
+  cursor: pointer;
+}
+
+.listingLink {
+  overflow: hidden;
+
+  img {
+    opacity: 0.8;
+    transform: scale(1);
+    transition: all 0.5s;
+  }
+
+  &:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
+
+  &:hover {
+    border-color: $link-color !important;
+  }
+}
