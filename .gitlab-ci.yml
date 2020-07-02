@@ -4,6 +4,6 @@ pages:
     - echo 'Nothing to do Ali Hammad'
   artifacts:
     paths:
-      - static/
+      - public/
   only:
     - master
