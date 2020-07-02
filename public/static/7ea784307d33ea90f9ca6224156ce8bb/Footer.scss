@@ -1,0 +1,13 @@
+
+@import '../../styles/init.scss';
+
+.affiliates-footer {
+	@include clearfix;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid $layout-low-contrast-neutral-light;
+
+	img {
+		height: 75px;
+		max-width: auto;
+	}
+}

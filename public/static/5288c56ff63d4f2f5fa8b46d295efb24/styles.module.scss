@@ -1,0 +1,108 @@
+@import "../../../styles/init.scss";
+
+$barThickness: 1px;
+$nodeSize: 8px;
+
+.timeline {
+    list-style: none;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timelineBar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $barThickness;
+    border-left: $barThickness solid darken($brand-grey, 10%);
+    height: 100%;
+}
+
+.floatingTag {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+}
+
+.title {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+
+    color: black;
+    box-shadow: none;
+    @include z-depth-transition();
+    @include hover-focus {
+        display: block;
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        @include z-depth(8);
+        @include z-depth-transition();
+    }
+
+    background-color: transparent;
+    transition: all 0.4s;
+
+    .entryActive & {
+        background-color: lighten(white, 0%);
+        transition: all 0.4s;
+    }
+}
+
+.date {
+    border-radius: 25px;
+    border: 3px solid lighten($brand-blue, 20%);
+    background-color: lighten($brand-blue, 20%);
+    color: #495057;
+    transition: all 0.5s;
+
+    .entryActive & {
+        background-color: lighten($brand-blue, 0%);
+        color: $brand-alt-grey;
+        transition: all 0.5s;
+    }
+}
+
+.dateContainer {
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        width: $nodeSize;
+        height: $nodeSize;
+        background-color: lighten($brand-blue, 30%);
+        border-radius: 50%;
+
+        transition: all 0.4s;
+        .entryActive & {
+            transition: all 0.4s;
+            background-color: lighten($brand-blue, 0%);
+        }
+    }
+
+    &.leftAligned {
+        &:before {
+            right: 0;
+            transform: translateX(50%) scale(1);
+
+            .entryActive & {
+                transform: translateX(50%) scale(1.1);
+            }
+        }
+    }
+
+    &.rightAligned {
+        &:before {
+            left: 0;
+            transform: translateX(-50%) scale(1);
+
+            .entryActive & {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+    }
+}

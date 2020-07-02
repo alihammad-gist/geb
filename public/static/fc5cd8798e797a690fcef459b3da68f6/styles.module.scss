@@ -1,0 +1,40 @@
+.slideRow {
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer,
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.imageContainer {
+  align-items: flex-end;
+  img {
+    max-width: 250px;
+  }
+}
+
+.textContainer {
+  max-width: 500px;
+}
+
+.docItem {
+  transition: all 1s;
+  opacity: 0;
+}
+
+.docItemActive {
+  transition: all 1s;
+  visibility: visible;
+  opacity: 1;
+}
+
+// @keyframes reveal {
+//   0% {
+//     opacity: ;
+//   }
+// }
