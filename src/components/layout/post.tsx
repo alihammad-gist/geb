@@ -2,6 +2,7 @@ import React from 'react';
 import { Section, SectionType } from '.';
 import { Container, Row, Col } from 'reactstrap';
 
+
 type props = React.PropsWithChildren<{
     title: string
 }>
@@ -19,6 +20,10 @@ export default ({ children, title }: props) => {
                 <Row>
                     <Col md='8'>
                         <h3>{title}</h3>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md='8'>
                         {children[0]}
                     </Col>
                     <Col md='4'>

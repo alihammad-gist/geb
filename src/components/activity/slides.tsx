@@ -75,13 +75,13 @@ query activitesList {
                                                 animationInDelay: idx * 150,
                                                 animationInDuration: 500
                                             },
-                                            <Link className={`${styles.slide} m-1`} to={`/work/activities/${readableLink(node.title)}`}>
+                                            <Link className={`${styles.slide} m-1`} to={`/media/activities/${readableLink(node.title)}`}>
                                                 <img
                                                     src={node.Cover.file.publicURL}
-                                                    alt={node.Cover.captions}
+                                                    alt={node.Cover.caption}
                                                     className={styles.slideCover}
                                                 />
-                                                <h6 className={styles.slideTitle}>{node.title}</h6>
+                                                <h5 className={styles.slideTitle}>{node.title}</h5>
 
                                                 <div className={styles.slideMeta}>
                                                     <span className={styles.slideVenue}>

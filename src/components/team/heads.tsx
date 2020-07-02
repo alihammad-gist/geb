@@ -14,6 +14,7 @@ type props = {
     shadow?: boolean
     decoratedHeading?: boolean
     mimicReportDesign?: boolean
+    description?: boolean
 }
 
 export default ({
@@ -22,6 +23,7 @@ export default ({
     shadow = false,
     decoratedHeading = false,
     mimicReportDesign = false,
+    description = false,
 }: props) => {
     const data = useStaticQuery(graphql`
         query teamHeads {

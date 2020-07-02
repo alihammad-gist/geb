@@ -20,7 +20,7 @@ export default () => {
                 </Media>
                 <Media body>
                     <p className="mb-0">
-                        Project Management Unit (PMU), UNDP’s GEB Project
+                        Project Management Unit (PMU), GEB Project
                     </p>
                     <p className="mb-0">
                         Building No. 301, Street No. 87, E 11/ 2

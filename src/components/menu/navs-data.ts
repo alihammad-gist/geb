@@ -85,20 +85,20 @@ export const primary: NavigationItem[] = [
 		href: '/contact-us',
 		label: 'Contact Us',
 	},
-	{
-		name: 'search',
-		href: "#",
-		label: "Search"
-	}
+	// {
+	// 	name: 'search',
+	// 	href: "#",
+	// 	label: "Search"
+	// }
 ];
 
 // General navigation contains only the top level nav items
-export const general: NavigationItem[] = primary.map((item: NavigationItem) => {
-	if (item === 'separator') {
+export const general: NavigationItem[] = primary.map((item: NavigationItem, idx) => {
+	if (item === 'separator' || typeof item.children === 'undefined') {
 		return item;
 	}
 
-	return { ...item, children: undefined };
+	return item.children[0];
 });
 
 // Activities navigation to retrieve particular activity types

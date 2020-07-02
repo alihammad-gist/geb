@@ -4,6 +4,7 @@ import { FaEnvelope, FaExternalLinkAlt, FaHeading, FaUser } from 'react-icons/fa
 import { Button, Form, FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Label, FormFeedback } from 'reactstrap';
 import { DefaultTooltip } from '../text';
 import { ErrorFeedback, hasError } from '../../lib/errors';
+import { MdPerson, MdEmail, MdTitle, MdLink, MdLaunch } from 'react-icons/md';
 
 export default () => {
 
@@ -53,7 +54,7 @@ ${d.email}`)}`;
                     <InputGroup>
                         <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                                <FaUser />
+                                <MdPerson />
                             </InputGroupText>
                         </InputGroupAddon>
                         <Input
@@ -75,7 +76,7 @@ ${d.email}`)}`;
                     <InputGroup>
                         <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                                <FaEnvelope />
+                                <MdEmail />
                             </InputGroupText>
                         </InputGroupAddon>
                         <Input
@@ -96,7 +97,7 @@ ${d.email}`)}`;
                     <InputGroup>
                         <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                                <FaHeading />
+                                <MdTitle />
                             </InputGroupText>
                         </InputGroupAddon>
                         <Input
@@ -142,7 +143,7 @@ ${d.email}`)}`;
                 >
                     Send
 					<span className="svg-icon svg-baseline ml-2">
-                        <FaExternalLinkAlt />
+                        <MdLaunch />
                     </span>
                 </Button>
                 <DefaultTooltip

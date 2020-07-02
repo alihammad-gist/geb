@@ -1,7 +1,13 @@
-export type Cover = {
-    captions: string
+export type Asset = {
+    caption: string
     file: {
         publicURL: string
+        childImageSharp: {
+            fluid: {
+                aspectRatio: number
+                src: string
+            }
+        }
     }
 }
 
@@ -15,9 +21,10 @@ export type Activity = {
     date: string
     venue: string
     description: string
-    Cover: Cover
+    Cover: Asset
     activity_types: [ActivityType, ...ActivityType[]] // at least one activity type exists
     press_coverages: PressCoverage[]
+    Gallery: Asset[]
 }
 
 export type QueryResult = {
@@ -26,4 +33,8 @@ export type QueryResult = {
             edges: { node: Activity }[]
         }
     }
+}
+
+export type SingleResult = {
+    strapiActivity: Activity
 }

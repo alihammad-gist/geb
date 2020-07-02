@@ -91,7 +91,7 @@ export default (p: props) => {
                 blogs={p.data.allStrapiBlog.edges.map(e => e.node)}
             />
 
-            <Section type={SectionType.darkOverAltGray}>
+            <Section type={SectionType.darkOverGray}>
                 <Container>
                     <p className="float-left">
                         Page {p.pageContext.currentPage} / {p.pageContext.totalPages}

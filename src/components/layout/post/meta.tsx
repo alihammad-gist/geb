@@ -11,7 +11,7 @@ type props = React.PropsWithChildren<{
  */
 export default (p: props) => {
     return (
-        <Card className="mt-3 mb-4" style={{ border: 'none' }}>
+        <Card className="mt-2 mb-4" style={{ border: 'none' }}>
             <CardBody style={{ padding: 0 }}>
                 {p.label && <CardTitle className='border-bottom text-muted'>{p.label}</CardTitle>}
                 {p.children}

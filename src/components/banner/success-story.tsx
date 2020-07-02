@@ -2,6 +2,8 @@ import React from 'react';
 import { Jumbotron } from 'reactstrap';
 import { useStaticQuery, graphql } from 'gatsby';
 import { SingularResult } from 'ProjectDescriptionExcerpt';
+import ScrollAnimation from 'react-animate-on-scroll';
+const image = require('./images/info-graphic.jpg');
 
 export default () => {
 
@@ -21,13 +23,15 @@ query SuccessStoryBanner {
     <Jumbotron
       style={{
         backgroundSize: 'cover',
-        backgroundImage: `url(${data.strapiProjectDescription.outcomes[2].slider_background.publicURL})`,
+        backgroundImage: `url(${image})`,
         padding: '8rem 0',
         backgroundPosition: 'center',
       }}
     >
       <div className='text-center'>
-        <h2 className='d-inline-block text-white border-bottom'>Success Story</h2>
+        <ScrollAnimation animateIn='fadeInDown' animateOnce={true}>
+          <h1 className='d-inline-block text-white border-bottom'>Success Story</h1>
+        </ScrollAnimation>
       </div>
     </Jumbotron>
   );

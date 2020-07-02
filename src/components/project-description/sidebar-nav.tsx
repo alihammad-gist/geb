@@ -18,12 +18,12 @@ export type DocItem = keyof typeof items;
 type props = {
     active: DocItem
     onChange: (i: DocItem) => void
+    scrollToId?: string
 }
 
-export default ({ active, onChange }: props) => {
+export default ({ active, onChange, scrollToId: scrollToId = '#' }: props) => {
 
     const handleClick = (i: DocItem) => (e: React.SyntheticEvent) => {
-        e.preventDefault();
 
         if (active !== i) {
             onChange(i);
@@ -35,7 +35,7 @@ export default ({ active, onChange }: props) => {
             {Object.keys(items).map(k => {
                 return (
                     <NavItem active={active === k} key={k}>
-                        <NavLink href="#" onClick={handleClick(k as DocItem)}>
+                        <NavLink href={scrollToId} onClick={handleClick(k as DocItem)}>
                             {items[k as DocItem]}
                         </NavLink>
                     </NavItem>

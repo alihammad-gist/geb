@@ -73,7 +73,7 @@ export default ({ member }: props) => {
                     </Row>
                 </Container>
             </Section>
-            <Section type={SectionType.darkOverAltGray}>
+            {/* Social Icons             <Section type={SectionType.darkOverAltGray}>
                 {(member.linkedIn || member.twitter) ?
                     <Container>
                         <Row className="align-items-center">
@@ -98,6 +98,7 @@ export default ({ member }: props) => {
                     : null
                 }
             </Section>
+            */}
         </>
     );
 }

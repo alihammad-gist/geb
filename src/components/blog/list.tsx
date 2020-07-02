@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 
 export default ({ blogs }: { blogs: Blog[] }) => {
     return (
-        <Section type={SectionType.darkOverAltGray}>
+        <Section type={SectionType.darkOverGray}>
             <Container>
                 {blogs.map((blog, idx) => (
                     <Row key={idx} className="py-4 border-bottom">

@@ -9,6 +9,7 @@ import { Truncate, DefaultTooltip } from '../../text';
 import { MdFileDownload } from 'react-icons/md';
 import { PaginationNav } from '../../nav';
 import { ReportModal } from '..';
+import * as styles from '../styles.module.scss';
 
 export const reportsListQuery = graphql`
     query reportListing($skip: Int!, $limit: Int!) {
@@ -61,69 +62,70 @@ export default (p: props) => {
     return (
         <Layout>
             <Head title={`Reports Page ${p.pageContext.currentPage}`} />
-            <Section
-                type={SectionType.darkOverWhite}
-            >
+            <Section type={SectionType.darkOverWhite}>
                 <Container>
                     <Row>
                         <Col md="3">
                             <WorkMenu />
                         </Col>
                         <Col md="9">
-                            {p.data.allStrapiReport.edges.map(({ node: report }, idx) => {
-                                return (
-                                    <Media
-                                        key={idx}
-                                        className={`
+                            <Row>
+                                {p.data.allStrapiReport.edges.map(({ node: report }, idx) => {
+                                    return (
+                                        <Col md='6' className='d-flex' key={idx}>
+                                            <Media
+                                                key={idx}
+                                                className={`
                                             p-2
-                                            py-4
-                                            ${/*idx % 2 === 0 ? 'bg-light' : */''}
+                                            my-3
+                                            d-flex flex-column justify-content-between border
                                         `}
-                                    >
-                                        <Media left className={`
-                                            mr-4
-                                            pr-4
-                                            py-2
-                                            border-right
-                                        `}>
-                                            <img
-                                                src={report.cover.publicURL}
-                                                className='fluid-img d-block'
-                                                style={{
-                                                    maxWidth: "150px"
-                                                }}
-                                            />
-                                            <Button
-                                                color="accent"
-                                                onClick={() => openReport(idx)}
-                                                target="_blank"
-                                                className="float-right mt-2"
-                                                id={`download_report_${idx}`}
                                             >
-                                                <span className="icon-text">
-                                                    <MdFileDownload size='1.3rem' />
-                                                    <span>
-                                                        Download PDF                                                     </span>
-                                                </span>
-                                            </Button>
-                                            <DefaultTooltip target={`download_report_${idx}`}>
+                                                <Media className='d-flex flex-column'>
+                                                    <a href="#"
+                                                        className={`d-block ${styles.listingLink}`}
+                                                        id={`report_${idx}`}
+                                                        onClick={() => openReport(idx)}
+                                                    >
+                                                        <img
+                                                            src={report.cover.publicURL}
+                                                            className='img-fluid'
+                                                            style={{
+                                                                width: '100%',
+                                                                height: 'auto',
+                                                            }}
+                                                        />
+                                                    </a>
+                                                    <DefaultTooltip target={`report_${idx}`} style={{ maxWidth: '400px' }}>
+                                                        <h5>{report.title}</h5>
+                                                    </DefaultTooltip>
+                                                </Media>
+                                                <Button
+                                                    block
+                                                    color="accent"
+                                                    onClick={() => openReport(idx)}
+                                                    target="_blank"
+                                                    className="float-right mt-2"
+                                                    id={`download_report_${idx}`}
+                                                >
+                                                    <span className="icon-text">
+                                                        <MdFileDownload size='1.3rem' />
+                                                        <span>
+                                                            Download
+                                                            </span>
+                                                    </span>
+                                                </Button>
+                                                <DefaultTooltip target={`download_report_${idx}`}>
 
-                                                Download size: {
-                                                    (report.document.size / 1000000).toPrecision(2)
-                                                } MB
-                                            </DefaultTooltip>
-                                        </Media>
-                                        <Media body>
-                                            <h2 className="h4">{report.title}</h2>
-                                            <Truncate
-                                                max={350}
-                                                expandable={true}
-                                                text={report.summary}
-                                            />
-                                        </Media>
-                                    </Media>
-                                );
-                            })}
+                                                    Download size: {
+                                                        (report.document.size / 1000000).toPrecision(2)
+                                                    } MB
+                                                    </DefaultTooltip>
+                                            </Media>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
                             <div className="clearfix border-top mb-3" />
                             <PaginationNav
                                 className="float-right"

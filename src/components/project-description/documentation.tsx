@@ -46,9 +46,11 @@ export default () => {
                         <SideNav
                             active={activeTab}
                             onChange={setActiveTab}
+                            scrollToId='#tab_content_top'
                         />
                     </Col>
                     <Col md="9">
+                        <a id="tab_content_top" />
                         <TabContent activeTab={activeTab} className="overflow-hidden">
                             {(Object.keys(navItems) as DocItem[]).map(k => {
                                 switch (k) {

@@ -28,15 +28,12 @@ export default ({ report, truncateSummary = false, excludeTitle = false }: Props
                         <p>{report.title}</p>
                     </>
                     : null}
-                <h4 className="h5">Summary</h4>
-                <Truncate
-                    max={initialSummaryLength}
-                    text={report.summary}
-                    expandable={true}
-                />
 
                 <h4 className="h5">Publishing Date</h4>
                 <p>{formateDate(report.publishing_date)}</p>
+                <p>
+                    Send us your email address and we will mail you the download link for this report.
+                </p>
             </Col>
         </Row>
     );

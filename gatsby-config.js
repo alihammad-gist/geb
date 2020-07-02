@@ -94,6 +94,7 @@ module.exports = {
 		},
 		`gatsby-plugin-anchor-links`,
 		`gatsby-plugin-sharp`,
+		`gatsby-transformer-sharp`,
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 export default ({ src, alt }: { src: string, alt: string }) => {
   return (
@@ -16,13 +17,15 @@ query {
               `}
       render={images => (
         <div className='text-center my-2'>
-          <figure className="figure">
-            <img
-              src={images.allFile.nodes.find(((n: any) => baseName(src) === n.name)).publicURL}
-              alt={alt}
-              className="figure-img img-fluid rounded" />
-            <figcaption className="figure-caption text-right border-bottom">{alt}</figcaption>
-          </figure>
+          <ScrollAnimation animateIn='fadeIn' animateOnce>
+            <figure className="figure">
+              <img
+                src={images.allFile.nodes.find(((n: any) => baseName(src) === n.name)).publicURL}
+                alt={alt}
+                className="figure-img img-fluid rounded" />
+              <figcaption className="figure-caption text-right border-bottom">{alt}</figcaption>
+            </figure>
+          </ScrollAnimation>
         </div>
       )}
     />

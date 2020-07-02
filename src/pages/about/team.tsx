@@ -1,18 +1,12 @@
 import React from 'react';
 import { Layout } from '../../components/layout';
 import Head from '../../components/head';
-import { Subordinates, Heads, MemberMediaType } from '../../components/team';
+import { Subordinates, Heads, MemberMediaType, HeadsAlt } from '../../components/team';
 
 export default () => (
     <Layout>
         <Head title="GEB Team" />
-        <Heads
-            typ={MemberMediaType.Vertical}
-            shadow
-            decoratedHeading
-            mimicReportDesign
-            centered
-        />
+        <HeadsAlt />
         <Subordinates />
     </Layout>
 )

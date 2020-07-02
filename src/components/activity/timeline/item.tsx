@@ -6,6 +6,8 @@ import { Col, Media, Row } from 'reactstrap';
 import { Activity } from '../query';
 import * as styles from './styles.module.scss';
 import { Truncate } from '../../text';
+import { Link } from 'gatsby';
+import { readableLink } from '../../text/links';
 
 enum Orien {
     Left,
@@ -62,8 +64,8 @@ export default ({ activity, idx }: props) => {
                     animateIn="fadeIn"
                     animateOnce
                 >
-                    <a
-                        href="#"
+                    <Link
+                        to={`/media/activities/${readableLink(activity.title)}`}
                         className={`
                             ${styles.title}
                             ${leftAlign ? 'text-md-left' : 'text-md-right'}
@@ -92,7 +94,7 @@ export default ({ activity, idx }: props) => {
                             >
                                 <img
                                     src={activity.Cover.file.publicURL}
-                                    alt={activity.Cover.captions}
+                                    alt={activity.Cover.caption}
                                     className='float-left img-fluid'
                                     style={{ maxWidth: '160px' }}
                                 />
@@ -126,7 +128,7 @@ export default ({ activity, idx }: props) => {
                                 </p>
                             </Media>
                         </Media>
-                    </a>
+                    </Link>
                 </ScrollAnimation>
             </Col>
         </Row>

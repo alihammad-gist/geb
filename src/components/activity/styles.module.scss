@@ -21,8 +21,13 @@
     }
 
     .slideCover {
-      transform: scale(1.15) translateX(-50%);
+      transform: scale(1.05) translateX(-50%);
       transition: transform 0.5s;
+    }
+
+    .slideTitle {
+      height: 170px;
+      transition: all 0.5s;
     }
   }
 
@@ -94,7 +99,9 @@
   background-color: rgba($color: $brand-blue, $alpha: 0.9);
   color: white;
   margin: 0;
-  height: 120px;
+  height: 140px;
+  transition: all 0.5s;
+  text-align: center;
 }
 
 .slideMeta {

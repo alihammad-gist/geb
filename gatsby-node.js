@@ -3,6 +3,7 @@ const path = require('path');
 const reportsPerListingPage = 6;
 const blogsPerListingPage = 6;
 const pressCoverageActivitiesPerListingPage = 6;
+const activitiesPerListingPage = 9;
 
 module.exports = {
 	onCreateNode({ node, actions }) {
@@ -173,6 +174,7 @@ module.exports = {
 							node {
 								id		
 								title
+								strapiId
 							}
 						}
 					}
@@ -208,8 +210,11 @@ module.exports = {
 					.replace(/\W+/g, '-');
 
 				createPage({
-					path: `/work/activities/${slug}`,
+					path: `/media/activities/${slug}`,
 					component: activityPostTmpl,
+					context: {
+						id: node.strapiId,
+					}
 				});
 			})
 		}
@@ -250,5 +255,103 @@ module.exports = {
 			});
 		}
 
+
+
+
+		/**
+		 * Activities listing pages
+		 */
+		{
+			const activitiesListingTmpl = path.resolve('./src/components/activity/template/listing.tsx');
+			const activitiesByYearListingTmpl = path.resolve('./src/components/activity/template/listing-by-year.tsx');
+			const activitiesListingRes = await graphql(`
+				query  {
+					allStrapiActivity(sort:{order: DESC, fields:date}) {
+						edges {
+							node {
+								id		
+								title
+								strapiId
+								date
+							}
+						}
+					}
+				}
+			`);
+
+
+			const activities = activitiesListingRes.data.allStrapiActivity.edges;
+			let years = [];
+			activities.forEach(({ node }) => {
+				const date = new Date(node.date);
+				const year = date.getFullYear();
+				if (typeof years.find(y => y === year) === 'undefined') {
+					years.push(year);
+				}
+			})
+
+			const totalPages = Math.ceil(activities.length / activitiesPerListingPage);
+
+			// default listing
+			Array.from({ length: totalPages }).forEach((_, i) => {
+				createPage({
+					path: i === 0 ? '/media/activities' : `/media/activities/${i + 1}`,
+					component: activitiesListingTmpl,
+					context: {
+						limit: activitiesPerListingPage,
+						skip: i * activitiesPerListingPage,
+						years,
+						totalPages,
+						currentPage: i + 1,
+					}
+				});
+			});
+
+
+
+			// by year listing
+			years.forEach(async (year) => {
+				const from = `${year}-01-01`;
+				const till = `${year + 1}-01-01`;
+
+				const byYearactivitiesListingRes = await graphql(`
+					query  {
+						allStrapiActivity(filter:{date: {gte: "${from}", lt: "${till}"}}) {
+							edges {
+								node {
+									id		
+									title
+									strapiId
+									date
+								}
+							}
+						}
+					}
+				`);
+
+				const yearlyActivities = byYearactivitiesListingRes.data.allStrapiActivity.edges.length;
+				const totalPages = Math.ceil(yearlyActivities / activitiesPerListingPage);
+				console.log("ALI ==> ", totalPages, " - Total ACtities: ", yearlyActivities);
+				Array.from({ length: totalPages }).forEach((_, i) => {
+					createPage({
+						path: i === 0 ? `/media/yearly-activities-${year.toString()}` : `/media/yearly-activities-${year.toString()}/${i + 1}`,
+						component: activitiesByYearListingTmpl,
+						context: {
+							limit: activitiesPerListingPage,
+							skip: i * activitiesPerListingPage,
+							years,
+							currentYear: year,
+							totalPages,
+							from,
+							till,
+							currentPage: i + 1,
+						}
+					});
+
+				})
+			})
+		}
+
 	}
+
 };

@@ -6,10 +6,9 @@ import './Icons.scss';
 export default () => {
 	return (
 		<div className='social-media-icons'>
-			<a href="#"><FA.FaFacebook /></a>	
-			<a href="#"><FA.FaTwitter className="ml-4" /></a>	
-			<a href="#"><FA.FaInstagram className="ml-4" /></a>	
-			<a href="#"><FA.FaYoutube className="ml-4" /></a>	
+			<a href="#"><FA.FaFacebook /></a>
+			<a href="#"><FA.FaTwitter className="ml-4" /></a>
+			<a href="#"><FA.FaYoutube className="ml-4" /></a>
 		</div>
-	); 
+	);
 }

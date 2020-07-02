@@ -31,12 +31,15 @@ export default ({ blog }: { blog: Blog }) => {
                         <p className='text-justify'>{blog.body_abstract}...</p>
                         <AuthorMedia author={blog.author} />
                     </Col>
-                    <Col md="6" className="d-flex bg-white img-thumbnail">
-                        <img
-                            src={blog.cover.file.publicURL}
-                            alt={blog.cover.caption}
-                            className="img-fluid"
-                        />
+                    <Col
+                        md="6"
+                        className="bg-white shadow-lg"
+                        style={{
+                            backgroundImage: `url(${blog.cover.file.publicURL})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center right'
+                        }}
+                    >
                     </Col>
                 </Row>
             </Container>

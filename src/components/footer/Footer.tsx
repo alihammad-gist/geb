@@ -22,7 +22,6 @@ export default () => {
 			<Container className="mt-3">
 				<Row>
 					<Col md="3"><GeneralNav /></Col>
-					<Col md="3"><ActivitiesNav /></Col>
 					<Col md="3" className="ml-auto">
 						<FooterIcons />
 					</Col>
