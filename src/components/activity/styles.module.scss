@@ -9,7 +9,7 @@
       @include z-depth-transition();
 
       .slideVenue {
-        animation: slideInRight 0.5s ease 0.3s;
+        animation: slideInUp 0.5s ease 0.4s;
         animation-fill-mode: forwards;
       }
     }
@@ -60,12 +60,14 @@
   }
 }
 
-@keyframes slideInRight {
+@keyframes slideInUp {
   from {
-    transform: translateX(100%);
+    transform: translateY(100%);
+    opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -118,7 +120,9 @@
   color: white;
   transform: translateX(110%);
   display: block;
-  float: right;
+  // float: right;
+  height: 1.25em;
+  overflow: hidden;
 }
 
 .slideTag {
